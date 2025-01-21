@@ -136,6 +136,7 @@
                      
                       <div class="product__actions">
                         <div class="product__actions-item product__actions-item--addtocart">
+                          {% if user.is_authenticated %}
                           <button class="btn btn-primary add-to-cart-btn"
                           type="button"
                           data-product-id="{{ product.id }}"
@@ -144,6 +145,14 @@
                       <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                       <span class="btn-text">Add To Cart</span>
                   </button>
+                  {% else %}
+                  <button class="btn btn-primary add-to-cart-btn"
+                  type="button"
+                >
+              <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+              <span class="btn-text">Add To Cart</span>
+          </button>
+          {% endif %}
                         </div>
                       </div>
                     </div>

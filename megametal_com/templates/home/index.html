@@ -636,6 +636,7 @@
                                             </div>
                                             <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
                                             <div class="product-card__buttons">
+                                                {% if user.is_authenticated %}
                                                 <button class="btn btn-primary add-to-cart-btn"
                                                 type="button"
                                                 data-product-id="{{ product.id }}"
@@ -644,6 +645,13 @@
                                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                             <span class="btn-text">Add To Cart</span>
                                         </button>
+                                        {% else %}
+                                        <button class="btn btn-primary add-to-cart-btn"
+                                        type="button">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    <span class="btn-text">Add To Cart</span>
+                                </button>
+                                {% endif %}
                                         
 
                                                 <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
@@ -766,6 +774,7 @@
                                             </div>
                                             <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
                                             <div class="product-card__buttons">
+                                                {% if user.is_authenticated %}
                                                 <button class="btn btn-primary add-to-cart-btn"
                                                 type="button"
                                                 data-product-id="{{ product.id }}"
@@ -774,6 +783,13 @@
                                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                             <span class="btn-text">Add To Cart</span>
                                               </button>
+                                              {% else %}
+                                              <button class="btn btn-primary add-to-cart-btn"
+                                              type="button">
+                                          <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                          <span class="btn-text">Add To Cart</span>
+                                            </button>
+                                            {% endif %}
                                         
 
                                                 <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
@@ -1315,7 +1331,9 @@
                                             <div class="product-card__availability">Availability: <span
                                                     class="text-success">In Stock</span></div>
                                             <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
-                                            <div class="product-card__buttons"> <button class="btn btn-primary add-to-cart-btn"
+                                            <div class="product-card__buttons"> 
+                                                {% if user.is_authenticated %}
+                                                <button class="btn btn-primary add-to-cart-btn"
                                                 type="button"
                                                 data-product-id="{{ product.id }}"
                                                 data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
@@ -1323,6 +1341,15 @@
                                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                             <span class="btn-text">Add To Cart</span>
                                               </button> 
+                                              {% else %}
+                                              <button class="btn btn-primary add-to-cart-btn"
+                                              type="button"
+                                             >
+                                          <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                          <span class="btn-text">Add To Cart</span>
+                                            </button> 
+                                            {% endif %}
+
                                              <button
                                                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                                                     type="button"><svg width="16px" height="16px">
@@ -1408,6 +1435,7 @@
                                                 <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
                                                 <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
                                                 <div class="product-card__buttons">
+                                                    {% if user.is_authenticated %}
                                                     <button class="btn btn-primary add-to-cart-btn" type="button"
                                                         data-product-id="{{ product.id }}"
                                                         data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
@@ -1415,6 +1443,12 @@
                                                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                                         <span class="btn-text">Add To Cart</span>
                                                     </button>
+                                                    {% else %}
+                                                    <button class="btn btn-primary add-to-cart-btn" type="button">
+                                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                    <span class="btn-text">Add To Cart</span>
+                                                </button>
+                                                {% endif %}
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
                                                         <svg width="16px" height="16px">
                                                             <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
@@ -1499,6 +1533,7 @@
                                                 <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
                                                 <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
                                                 <div class="product-card__buttons">
+                                                    {% if user.is_authenticated %}
                                                     <button class="btn btn-primary add-to-cart-btn" type="button"
                                                         data-product-id="{{ product.id }}"
                                                         data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
@@ -1506,6 +1541,13 @@
                                                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                                         <span class="btn-text">Add To Cart</span>
                                                     </button>
+                                                    {% else %}
+                                                    <button class="btn btn-primary add-to-cart-btn" type="button">
+                                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                    <span class="btn-text">Add To Cart</span>
+                                                </button>
+                                                {% endif %}
+
                                                     <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
                                                         <svg width="16px" height="16px">
                                                             <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
@@ -1518,7 +1560,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                        {% endfor %}==
+                        {% endfor %}
 
 
 

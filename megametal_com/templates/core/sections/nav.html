@@ -1,0 +1,601 @@
+{% load static %}
+
+
+
+
+
+<div id="quickview-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content"></div>
+    </div>
+</div><!-- quickview-modal / end --><!-- mobilemenu -->
+<div class="mobilemenu">
+    <div class="mobilemenu__backdrop"></div>
+    <div class="mobilemenu__body">
+        <div class="mobilemenu__header">
+            <div class="mobilemenu__title">Menu</div><button type="button" class="mobilemenu__close"><svg
+                    width="20px" height="20px">
+                    <use xlink:href="{% static 'images/sprite.svg' %}#cross-20"></use>
+                </svg></button>
+        </div>
+        <div class="mobilemenu__content">
+            <ul class="mobile-links mobile-links--level--0" data-collapse
+                data-collapse-opened-class="mobile-links__item--open">
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="index.html"
+                            class="mobile-links__item-link">Home</a></div>
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">Products</a>
+                        <button class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                class="mobile-links__item-arrow" width="12px" height="7px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                            </svg></button></div>
+                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                        <ul class="mobile-links mobile-links--level--1">
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Power Tools</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Engravers</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Wrenches</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Wall Chaser</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Pneumatic Tools</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Construction Equipment</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                   
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Excavators</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Bulldozers</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Cranes</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Loaders</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+                            
+                            
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Metal Products</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                   
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Steel Plates</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Aluminum Sheets</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Copper Wires</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Metal Pipes</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Industrial Machinery</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Lathes</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">CNC Machines</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Milling Machines</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Hydraulic Presses</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Mining Equipment</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Rock Drills</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Crushing Machines</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Mining Trucks</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Conveyor Belts</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link"> Agricultural Machinery</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Tractors</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Harvesters</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Plows</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Irrigation Systems</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+
+
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link"> Heavy Vehicles</a> <button
+                                        class="mobile-links__item-toggle" type="button" data-collapse-trigger><svg
+                                            class="mobile-links__item-arrow" width="12px" height="7px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                                        </svg></button></div>
+                                <div class="mobile-links__item-sub-links" data-collapse-content>
+                                    <ul class="mobile-links mobile-links--level--2">
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Dump Trucks</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Tankers</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Forklifts</a></div>
+                                        </li>
+                                        <li class="mobile-links__item" data-collapse-item>
+                                            <div class="mobile-links__item-title"><a href="#"
+                                                    class="mobile-links__item-link">Trailers</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="shop-grid-3-columns-sidebar.html"
+                            class="mobile-links__item-link">Shop</a> <button class="mobile-links__item-toggle"
+                            type="button" data-collapse-trigger><svg class="mobile-links__item-arrow" width="12px"
+                                height="7px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                            </svg></button></div>
+                            {% if user.is_authenticated %}
+                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                        <ul class="mobile-links mobile-links--level--1">
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'cart_view' %}"
+                                        class="mobile-links__item-link">Cart</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'checkout_view' %}"
+                                        class="mobile-links__item-link">Checkout</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="wishlist.html"
+                                        class="mobile-links__item-link">Wishlist</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'myorders' %}"
+                                        class="mobile-links__item-link">my orders</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                            class="mobile-links__item-link">Blog</a> </div>
+                </li> 
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                            class="mobile-links__item-link">About Us</a> </div>
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                            class="mobile-links__item-link">Contact
+                            Us</a> </div>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                            class="mobile-links__item-link">  Register as Partner</a> </div>
+                </li>
+                {% endif %}
+               
+
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a data-collapse-trigger
+                            class="mobile-links__item-link">
+                            Account </a> <button class="mobile-links__item-toggle"
+                            type="button" data-collapse-trigger><svg class="mobile-links__item-arrow" width="12px"
+                                height="7px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                            </svg></button></div>
+                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                        <ul class="mobile-links mobile-links--level--1">
+                            <li class="mobile-links__item" data-collapse-item>
+                            {% if user.is_authenticated %}
+                             <div class="mobile-links__item-title"><a href="{% url 'logout_view' %}" class="mobile-links__item-link">
+                                    Logout</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'myorders' %}" class="mobile-links__item-link">
+                                    Orders</a></div>
+                            </li>
+                            {% else %}
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'Authenticate_view' %}" class="mobile-links__item-link">₽
+                                    Login</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="{% url 'Authenticate_view' %}" class="mobile-links__item-link">₽
+                                    Register</a></div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a data-collapse-trigger
+                            class="mobile-links__item-link">Currency</a> <button class="mobile-links__item-toggle"
+                            type="button" data-collapse-trigger><svg class="mobile-links__item-arrow" width="12px"
+                                height="7px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                            </svg></button></div>
+                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                        <ul class="mobile-links mobile-links--level--1">
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">€
+                                        Euro</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">£
+                                        Pound Sterling</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">$
+                                        US Dollar</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">₽
+                                        Russian Ruble</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mobile-links__item" data-collapse-item>
+                    <div class="mobile-links__item-title"><a data-collapse-trigger
+                            class="mobile-links__item-link">Language</a> <button class="mobile-links__item-toggle"
+                            type="button" data-collapse-trigger><svg class="mobile-links__item-arrow" width="12px"
+                                height="7px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-12x7"></use>
+                            </svg></button></div>
+                    <div class="mobile-links__item-sub-links" data-collapse-content>
+                        <ul class="mobile-links mobile-links--level--1">
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">English</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">French</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">German</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Russian</a></div>
+                            </li>
+                            <li class="mobile-links__item" data-collapse-item>
+                                <div class="mobile-links__item-title"><a href="#"
+                                        class="mobile-links__item-link">Italian</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="site"><!-- mobile site__header -->
+    <header class="site__header d-lg-none">
+        <div class="mobile-header mobile-header--sticky mobile-header--stuck">
+            <div class="mobile-header__panel">
+                <div class="container">
+                    <div class="mobile-header__body"><button class="mobile-header__menu-button"><svg width="18px"
+                                height="14px">
+                                <use xlink:href="{% static 'images/sprite.svg' %}#menu-18x14"></use>
+                            </svg></button> <a class="mobile-header__logo" href="{% url 'home' %}">
+                                <h5>
+                                  <img class="responsive-logo" src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+                                </h5>
+                              </a>
+                              
+                        <div class="mobile-header__search">
+                            <form class="mobile-header__search-form" action="#"><input
+                                    class="mobile-header__search-input" name="search"
+                                    placeholder="Search over 10,000 products" aria-label="Site search" type="text"
+                                    autocomplete="off"> <button
+                                    class="mobile-header__search-button mobile-header__search-button--submit"
+                                    type="submit"><svg width="20px" height="20px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
+                                    </svg></button> <button
+                                    class="mobile-header__search-button mobile-header__search-button--close"
+                                    type="button"><svg width="20px" height="20px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#cross-20"></use>
+                                    </svg></button>
+                                <div class="mobile-header__search-body"></div>
+                            </form>
+                        </div>
+                        <div class="mobile-header__indicators">
+                            <div class="indicator indicator--mobile-search indicator--mobile d-sm-none"><button
+                                    class="indicator__button"><span class="indicator__area"><svg width="20px"
+                                            height="20px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
+                                        </svg></span></button></div>
+                                        {% if user.is_authenticated %}
+                            <div class="indicator indicator--mobile d-sm-flex d-none"><a href="wishlist.html"
+                                    class="indicator__button"><span class="indicator__area"><svg width="20px"
+                                            height="20px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#heart-20"></use>
+                                        </svg> <span class="indicator__value">0</span></span></a></div>
+                                        
+                            <div class="indicator indicator--mobile"> <a href="{% url 'cart_view' %}" class="indicator__button">
+                                <span class="indicator__area">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#cart-20"></use>
+                                    </svg>
+                                    <span class="indicator__value" id="cart-count1">0</span>
+                                </span>
+                            </a></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header><!-- mobile site__header / end --><!-- desktop site__header -->
+
+
+
+    <header class="site__header d-lg-block d-none">
+
+        
+        <div class="site-header"><!-- .topbar -->
+            <div class="site-header__topbar topbar">
+                <div class="topbar__container container bg-dark text-light">
+                    <div class="topbar__row">
+                       
+                        <div class="topbar__item topbar__item--link"><a class="topbar-link" href="#">Store
+                                Location</a></div>
+                        <div class="topbar__spring"></div>
+                        <div class="topbar__item">
+                            <div class="topbar-dropdown"><button class="topbar-dropdown__btn" type="button">My
+                                    Account <svg width="7px" height="5px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-7x5"></use>
+                                    </svg></button>
+                                <div class="topbar-dropdown__body"><!-- .menu -->
+                                    <ul class="menu menu--layout--topbar">
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url 'logout_view' %}">Logout</a></li>
+                                        <li><a href="{% url 'myorders' %}">Orders</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'Authenticate_view' %}">Login</a></li>
+                                        <li><a href="{% url 'Authenticate_view' %}">Register</a></li>
+                                         {% endif %} 
+                                    </ul><!-- .menu / end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topbar__item">
+                            <div class="topbar-dropdown"><button class="topbar-dropdown__btn"
+                                    type="button">Currency: <span class="topbar__item-value">USD</span> <svg
+                                        width="7px" height="5px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-7x5"></use>
+                                    </svg></button>
+                                <div class="topbar-dropdown__body"><!-- .menu -->
+                                    <ul class="menu menu--layout--topbar">
+                                        <li><a href="#">€ Euro</a></li>
+                                        <li><a href="#">£ Pound Sterling</a></li>
+                                        <li><a href="#">$ US Dollar</a></li>
+                                        <li><a href="#">₽ Russian Ruble</a></li>
+                                    </ul><!-- .menu / end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="topbar__item">
+                            <div class="topbar-dropdown"><button class="topbar-dropdown__btn"
+                                    type="button">Language: <span class="topbar__item-value">EN</span> <svg
+                                        width="7px" height="5px">
+                                        <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-7x5"></use>
+                                    </svg></button>
+                                <div class="topbar-dropdown__body"><!-- .menu -->
+                                    <ul class="menu menu--layout--topbar menu--with-icons">
+                                        <li><a href="#">
+                                                <div class="menu__icon"><img
+                                                        srcset="{% static 'images/languages/language-1.png' %}, images/languages/language-1@2x.png 2x"
+                                                        src="{% static 'images/languages/language-1.png' %}" alt=""></div>English
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="menu__icon"><img
+                                                        srcset="{% static 'images/languages/language-2.png'%}, images/languages/language-2@2x.png 2x"
+                                                        src="{% static 'images/languages/language-2.png'%}" alt=""></div>French
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="menu__icon"><img
+                                                        srcset="{% static 'images/languages/language-3.png'%}, images/languages/language-3@2x.png 2x"
+                                                        src="{% static 'images/languages/language-3.png'%}" alt=""></div>German
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="menu__icon"><img
+                                                        srcset="{% static 'images/languages/language-4.png' %}, images/languages/language-4@2x.png 2x"
+                                                        src="{% static 'images/languages/language-4.png' %}" alt=""></div>Russian
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="menu__icon"><img
+                                                        srcset="{% static 'images/languages/language-5.png' %}, images/languages/language-5@2x.png 2x"
+                                                        src="{% static 'images/languages/language-5.png' %}" alt=""></div>Italian
+                                            </a></li>
+                                    </ul><!-- .menu / end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .topbar / end -->
+            <div class="site-header__middle container">
+                <img src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+                <div class="site-header__search">
+                    <div class="search">
+                        <form class="search__form" action="#"><input class="search__input" name="search"
+                                placeholder="Search over 10,000 products" aria-label="Site search" type="text"
+                                autocomplete="off"> <button class="search__button" type="submit"><svg width="20px"
+                                    height="20px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
+                                </svg></button>
+                            <div class="search__border"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="site-header__phone">
+                    <div class="site-header__phone-title">Customer Service</div>
+                    <div class="site-header__phone-number">(800) 060-0730</div>
+                </div>
+            </div>
+
+
+
+
+            <script>
+               
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Function to fetch the cart count
+                        function updateCartCount() {
+                            fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
+                                .then(response => response.json())
+                                .then(data => {
+                                    const cartCountElement = document.getElementById("cart-count1");
+                                    if (cartCountElement) {
+                                        cartCountElement.textContent = data.cart_count; // Update the cart count
+                                    }
+                                })
+                                .catch(error => console.error("Error fetching cart count:", error));
+                        }
+                
+                        // Call updateCartCount on page load
+                        updateCartCount();
+                
+                        // Optionally, re-fetch cart count at intervals or trigger it on specific actions
+                    });
+             
+            </script>

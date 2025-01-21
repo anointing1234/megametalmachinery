@@ -1,0 +1,225 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+
+
+
+
+
+
+      
+      <!-- site__body -->
+      <div class="site__body">
+        <div class="page-header">
+          <div class="page-header__container container">
+            <div class="page-header__breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Home</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="page-header__title">
+              <h1>Orders</h1>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="order-details block py-5">
+            <div class="container">
+                <!-- Page Title -->
+                <h2 class="text-start mb-5 text-uppercase" style="font-weight: bold; font-size: 1.8rem;">
+                    Order Details - {{ order.order_id }}
+                </h2>
+        
+                <div class="row">
+                    <!-- Order Information -->
+                    <div class="col-lg-8 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <!-- Order Status -->
+                                <div class="mb-4">
+                                    <h5 style="font-weight: bold;">Order Status</h5>
+                                    <p>
+                                        <span class="badge 
+                                        {% if order.status == 'completed' %} bg-success text-light 
+                                        {% elif order.status == 'under_review' %} bg-warning text-light 
+                                        {% else %} bg-danger {% endif %}">
+                                        {% if order.status == 'completed' %}
+                                            Confirmed and Shipped
+                                        {% elif order.status == 'cancelled' %}
+                                            Failed
+                                        {% else %}
+                                            {{ order.get_status_display }}
+                                        {% endif %}
+                                    </span>
+                                    
+                                    </p>
+                                </div>
+        
+                                <!-- Customer Information -->
+                                <h5 style="font-weight: bold;">Customer Information</h5>
+                                <p><strong>Email:</strong> {{ order.email }}</p>
+                                <p><strong>Phone:</strong> {{ order.phone }}</p>
+        
+                                <!-- Delivery Address -->
+                                <h5 style="font-weight: bold;">Delivery Address</h5>
+                                <p>{{ order.street_address }}</p>
+                                <p>{{ order.city }}, {{ order.state }} - {{ order.postcode }}</p>
+        
+                                <!-- Pricing -->
+                                <h5 style="font-weight: bold;">Pricing</h5>
+                                <p><strong>Total Price:</strong> ${{ order.total_price|floatformat:2|intcomma }}</p>
+                             
+                                <!-- Delivery Date -->
+                                <h5 style="font-weight: bold;">Delivery Information</h5>
+                                <p>{{ order.formatted_delivery_date }}</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Order Image -->
+                    <div class="col-lg-4 mb-4">
+                        {% if order.order_image %}
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <h5 style="font-weight: bold; margin-bottom: 1rem;">Order Image</h5>
+                                <img src="{{ order.order_image.url }}" alt="Order Image" class="img-fluid rounded shadow-sm" style="max-width: 300px;">
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+        
+                <!-- Product Details -->
+        
+                <!-- Back to Orders Button -->
+                <div class="mt-4">
+                    <a href="{% url 'myorders' %}" class="btn btn-outline-dark">
+                        Back to My Orders
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        
+
+          </div>
+        </div>
+        
+
+
+
+
+
+
+        
+
+
+
+      </div>
+      <!-- site__body / end -->
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to fetch the cart count
+            function updateCartCount() {
+                fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
+                    .then(response => response.json())
+                    .then(data => {
+                        const cartCountElement = document.getElementById("cart-count");
+                        if (cartCountElement) {
+                            cartCountElement.textContent = data.cart_count; // Update the cart count
+                        }
+                    })
+                    .catch(error => console.error("Error fetching cart count:", error));
+            }
+    
+            // Call updateCartCount on page load
+            updateCartCount();
+    
+            // Optionally, re-fetch cart count at intervals or trigger it on specific actions
+        });
+    </script>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        // Increase quantity
+        $('.increase-quantity').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'increase' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+
+        // Decrease quantity
+        $('.decrease-quantity').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'decrease' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+
+        // Remove item from cart
+        $('.remove-item').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'remove' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+    {% endblock %}

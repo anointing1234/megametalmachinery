@@ -1,0 +1,1 @@
+web: gunicorn megametal.wsgi --log-file -

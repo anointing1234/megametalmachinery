@@ -1,0 +1,293 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+{% block contents %}
+
+
+
+      <!-- site__body -->
+      <div class="site__body">
+        <div class="page-header">
+          <div class="page-header__container container">
+            <div class="page-header__breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Home</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Register as partnert</li>
+                </ol>
+              </nav>
+            </div>
+         
+          </div>
+        </div>
+        <div class="block">
+          <div class="container min-vh-100 d-flex align-items-center justify-content-center">
+            <div class="row w-100">
+                <div class="col-md-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h3 class="card-title text-center mb-4">Register as a Partner</h3>
+                                
+                                <!-- Company Name -->
+                                <div class="form-group mb-3">
+                                    <label for="id_company_name">Company Name</label>
+                                    {{ form.company_name }}
+                                    {% if form.company_name.errors %}
+                                        <div class="text-danger">{{ form.company_name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Contact Person -->
+                                <div class="form-group mb-3">
+                                    <label for="id_contact_person">Contact Person</label>
+                                    {{ form.contact_person }}
+                                    {% if form.contact_person.errors %}
+                                        <div class="text-danger">{{ form.contact_person.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Email -->
+                                <div class="form-group mb-3">
+                                    <label for="id_email">Email</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Phone Number -->
+                                <div class="form-group mb-3">
+                                    <label for="id_phone_number">Phone Number</label>
+                                    {{ form.phone_number }}
+                                    {% if form.phone_number.errors %}
+                                        <div class="text-danger">{{ form.phone_number.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Company Type -->
+                                <div class="form-group mb-3">
+                                    <label for="id_company_type">Company Type</label>
+                                    {{ form.company_type }}
+                                    {% if form.company_type.errors %}
+                                        <div class="text-danger">{{ form.company_type.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Address -->
+                                <div class="form-group mb-3">
+                                    <label for="id_address">Address</label>
+                                    {{ form.address }}
+                                    {% if form.address.errors %}
+                                        <div class="text-danger">{{ form.address.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Services Provided -->
+                                <div class="form-group mb-3">
+                                    <label for="id_services_provided">Services Provided</label>
+                                    {{ form.services_provided }}
+                                    {% if form.services_provided.errors %}
+                                        <div class="text-danger">{{ form.services_provided.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Website -->
+                                <div class="form-group mb-3">
+                                    <label for="id_website">Website</label>
+                                    {{ form.website }}
+                                    {% if form.website.errors %}
+                                        <div class="text-danger">{{ form.website.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                                </div>
+                            </form>                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        </div>
+
+
+
+
+
+      </div>
+      <!-- site__body / end -->
+   
+
+
+     <!-- SweetAlert2 CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+     <!-- SweetAlert2 JavaScript -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+     <script>
+      function showBankDetails(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+    
+        // Display a loading spinner with SweetAlert2
+        Swal.fire({
+          title: 'Processing...',
+          text: 'Please wait while we process your registration.',
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+    
+        // Collect form data
+        const form = document.getElementById('signupStep1');
+        const formData = new FormData(form);
+    
+        // Send data to the server
+        fetch("{% url 'register' %}", {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': '{{ csrf_token }}'
+          }
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            Swal.close(); // Close the loading spinner
+            if (data.success) {
+              // Show success message
+              Swal.fire({
+                icon: 'success',
+                title: 'Registration Successful!',
+                text: data.message || 'You have successfully registered!',
+                confirmButtonText: 'Okay'
+              }).then(() => {
+                window.location.href = data.redirect_url; // Redirect to the next page
+              });
+            } else {
+              // Show error message
+              Swal.fire({
+                icon: 'error',
+                title: 'Registration Failed',
+                text: data.message || 'Please check your details and try again.',
+                confirmButtonText: 'Okay'
+              });
+            }
+          })
+          .catch((error) => {
+            Swal.close();
+            Swal.fire({
+              icon: 'error',
+              title: 'An Error Occurred',
+              text: 'Something went wrong. Please try again later.',
+              confirmButtonText: 'Okay'
+            });
+            console.error('Error:', error);
+          });
+      }
+    
+      // Password toggle visibility
+      const togglePasswordButton = document.getElementById('eyeIcon');
+      const passwordInput = document.querySelector('[name="password"]');
+      const eyeIcon = document.getElementById('eyeIcon');
+    
+      if (togglePasswordButton && passwordInput) {
+        togglePasswordButton.addEventListener('click', function () {
+          // Toggle the password input type
+          const type = passwordInput.type === 'password' ? 'text' : 'password';
+          passwordInput.type = type;
+    
+          // Update the icon class
+          if (type === 'password') {
+            eyeIcon.classList.remove('bi-eye');
+            eyeIcon.classList.add('bi-eye-slash');
+          } else {
+            eyeIcon.classList.remove('bi-eye-slash');
+            eyeIcon.classList.add('bi-eye');
+          }
+        });
+      }
+    </script>
+
+
+    <script>
+      function handleLogin(event) {
+        event.preventDefault()
+      
+        // Show loading spinner
+        Swal.fire({
+          title: 'Logging in...',
+          text: 'Please wait while we verify your details.',
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading()
+          }
+        })
+      
+        const formData = new FormData(document.getElementById('LoginForm'))
+      
+        fetch("{% url 'login_view' %}", {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': '{{ csrf_token }}'
+          }
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            Swal.close() // Close the loading message
+            if (data.success) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Welcome!',
+                text: data.message || 'You have successfully logged in!',
+                confirmButtonText: 'Okay'
+              }).then(() => {
+                window.location.href = data.redirect_url
+              })
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Login failed',
+                text: data.message || 'Invalid phone number or password. Please try again.',
+                confirmButtonText: 'Okay'
+              })
+            }
+          })
+      }
+    </script>
+    
+      
+       
+       
+
+
+
+
+
+
+
+
+
+    {% endblock %}

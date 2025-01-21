@@ -1,0 +1,228 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+
+
+
+
+      
+      <!-- site__body -->
+      <div class="site__body">
+        <div class="page-header">
+          <div class="page-header__container container">
+            <div class="page-header__breadcrumb">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Home</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                    </svg>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="page-header__title">
+              <h1>Shopping Cart</h1>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="cart block">
+            <div class="container">
+              {% if cart_items %}
+                <table class="cart__table cart-table">
+                  <thead class="cart-table__head">
+                    <tr class="cart-table__row">
+                      <th class="cart-table__column cart-table__column--image">Image</th>
+                      <th class="cart-table__column cart-table__column--product">Product</th>
+                      <th class="cart-table__column cart-table__column--price">Price</th>
+                      <th class="cart-table__column cart-table__column--quantity">Quantity</th>
+                      <th class="cart-table__column cart-table__column--total">Total</th>
+                      <th class="cart-table__column cart-table__column--remove"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="cart-table__body">
+                    {% for item in cart_items %}
+                    <tr class="cart-table__row" data-item-id="{{ item.id }}">
+                      <td class="cart-table__column cart-table__column--image">
+                        <a href="{% url 'product_detail' item.product.id %}"><img src="{{ item.product.image.url }}" alt="" /></a>
+                      </td>
+                      <td class="cart-table__column cart-table__column--product">
+                        <a href="#" class="cart-table__product-name">{{ item.product.name|upper }}</a>
+                        <ul class="cart-table__options">
+                          <li>Material: {{ item.product.material }}</li>
+                        </ul>
+                      </td>
+                      <td class="cart-table__column cart-table__column--price" data-title="Price">${{ item.product.price|floatformat:2|intcomma }}</td>
+                      <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
+                        <div class="input-number">
+                          <input id="quantity-{{ item.id }}" class="form-control input-number__input" type="number" min="1" value="{{ item.quantity }}" />
+                          <div class="input-number__add increase-quantity" data-item-id="{{ item.id }}"></div>
+                          <div class="input-number__sub decrease-quantity" data-item-id="{{ item.id }}"></div>
+                        </div>
+                      </td>
+                      <td class="cart-table__column cart-table__column--total" data-title="Total" id="total-{{ item.id }}">${{ item.total_price|floatformat:2|intcomma }}</td>
+                      <td class="cart-table__column cart-table__column--remove">
+                        <button type="button" class="btn btn-light btn-sm btn-svg-icon remove-item" data-item-id="{{ item.id }}">
+                          <svg width="12px" height="12px">
+                            <use xlink:href="{% static 'images/sprite.svg'%}#cross-12"></use>
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+          
+                <div class="cart__actions">
+                  <div class="cart__buttons">
+                    <a href="{% url 'home' %}" class="btn btn-warning">Continue Shopping</a>
+                  </div>
+                </div>
+          
+                <div class="row justify-content-end pt-5">
+                  <div class="col-12 col-md-7 col-lg-6 col-xl-5">
+                    <div class="card">
+                      <div class="card-body">
+                        <h3 class="card-title">Cart Totals</h3>
+                        <table class="cart__totals">
+                          <tbody class="cart__totals-body">
+                            <tr>
+                              <th>Shipping fee</th>
+                              <td id="shipping-fee">${{ shipping_total|floatformat:2|intcomma }}</td>
+                            </tr>
+                          </tbody>
+                          <tfoot class="cart__totals-footer">
+                            <tr>
+                              <th>Total</th>
+                              <td id="total-amount">${{ total|floatformat:2|intcomma }}</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                        <a class="btn btn-primary btn-xl btn-block cart__checkout-button" href="{% url 'checkout_view' %}">Proceed to checkout</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="cart-empty text-center">
+                    <img src="{% static 'images/empty.png' %}" alt="No Cart Available" style="max-width: 200px; height: auto;" class="my-3" />
+                    <h3>Your cart is currently empty.</h3>
+                  <a href="{% url 'home' %}" class="btn btn-warning mt-3">Continue Shopping</a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          
+
+
+
+
+        
+
+
+
+      </div>
+      <!-- site__body / end -->
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to fetch the cart count
+            function updateCartCount() {
+                fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
+                    .then(response => response.json())
+                    .then(data => {
+                        const cartCountElement = document.getElementById("cart-count");
+                        if (cartCountElement) {
+                            cartCountElement.textContent = data.cart_count; // Update the cart count
+                        }
+                    })
+                    .catch(error => console.error("Error fetching cart count:", error));
+            }
+    
+            // Call updateCartCount on page load
+            updateCartCount();
+    
+            // Optionally, re-fetch cart count at intervals or trigger it on specific actions
+        });
+    </script>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        // Increase quantity
+        $('.increase-quantity').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'increase' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+
+        // Decrease quantity
+        $('.decrease-quantity').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'decrease' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+
+        // Remove item from cart
+        $('.remove-item').on('click', function() {
+            var itemId = $(this).data('item-id'); // Get the item ID
+            $.ajax({
+                url: "{% url 'remove' 0 %}".replace('0', itemId), // Replace '0' with itemId dynamically
+                method: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}' // CSRF token for POST request
+                },
+                success: function() {
+                    setTimeout(function() {
+                        location.reload(); // Reload the page after a slight delay
+                    }, 100); // Delay in milliseconds
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+    {% endblock %}

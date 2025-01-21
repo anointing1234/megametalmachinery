@@ -1,0 +1,1634 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+
+{% block header %}
+
+
+                <div class="site-header__nav-panel">
+                    <div class="nav-panel">
+                        <div class="nav-panel__container container">
+                            <div class="nav-panel__row">
+                                <div class="nav-panel__departments"><!-- .departments -->
+                                    <div class="departments departments--opened departments--fixed"
+                                        data-departments-fixed-by=".block-slideshow">
+                                        <div class="departments__body">
+                                            <div class="departments__links-wrapper">
+                                                <ul class="departments__links">
+
+
+
+
+
+                                                    <li class="departments__item">
+                                                        <a href="#">Power Tools <svg
+                                                                class="departments__link-arrow" width="6px"
+                                                                height="9px">
+                                                                <use
+                                                                    xlink:href="{% static 'mages/sprite.svg'%}#arrow-rounded-right-6x9">
+                                                                </use>
+                                                            </svg></a>
+                                                        <div class="departments__megamenu departments__megamenu--xl">
+                                                            <!-- .megamenu -->
+                                                            <div class="megamenu megamenu--departments"
+                                                                style="background-image: url('{% static 'images/megamenu/megamenu-1.jpg' %}');">
+                                                                <div class="row">
+                                                                    <div class="col-3">
+                                                                        <ul
+                                                                            class="megamenu__links megamenu__links--level--0">
+                                                                            <li
+                                                                                class="megamenu__item megamenu__item--with-submenu">
+                                                                                <a href="#">Power Tools</a>
+                                                                                <ul
+                                                                                    class="megamenu__links megamenu__links--level--1">
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Engravers</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Drills</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Wrenches</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Plumbing</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Wall Chaser</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Pneumatic Tools</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Milling Cutters</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li class="megamenu__item"><a
+                                                                                    href="#">Workbenches</a></li>
+                                                                            <li class="megamenu__item"><a
+                                                                                    href="#">Presses</a></li>
+                                                                            <li class="megamenu__item"><a href="#">Spray
+                                                                                    Guns</a></li>
+                                                                            <li class="megamenu__item"><a
+                                                                                    href="#">Riveters</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <ul
+                                                                            class="megamenu__links megamenu__links--level--0">
+                                                                            <li
+                                                                                class="megamenu__item megamenu__item--with-submenu">
+                                                                                <a href="#">Hand Tools</a>
+                                                                                <ul
+                                                                                    class="megamenu__links megamenu__links--level--1">
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Screwdrivers</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Handsaws</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Knives</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Axes</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Multitools</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Paint Tools</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                            <li
+                                                                                class="megamenu__item megamenu__item--with-submenu">
+                                                                                <a href="#">Garden Equipment</a>
+                                                                                <ul
+                                                                                    class="megamenu__links megamenu__links--level--1">
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Motor Pumps</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Chainsaws</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Electric Saws</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Brush Cutters</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <ul
+                                                                            class="megamenu__links megamenu__links--level--0">
+                                                                            <li
+                                                                                class="megamenu__item megamenu__item--with-submenu">
+                                                                                <a href="#">Machine Tools</a>
+                                                                                <ul
+                                                                                    class="megamenu__links megamenu__links--level--1">
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Thread Cutting</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Chip Blowers</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Sharpening
+                                                                                            Machines</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Pipe Cutters</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Slotting
+                                                                                            machines</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Lathes</a></li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <ul
+                                                                            class="megamenu__links megamenu__links--level--0">
+                                                                            <li
+                                                                                class="megamenu__item megamenu__item--with-submenu">
+                                                                                <a href="#">Instruments</a>
+                                                                                <ul
+                                                                                    class="megamenu__links megamenu__links--level--1">
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Welding
+                                                                                            Equipment</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Power Tools</a>
+                                                                                    </li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Hand Tools</a></li>
+                                                                                    <li class="megamenu__item"><a
+                                                                                            href="#">Measuring Tool</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- .megamenu / end -->
+                                                        </div>
+                                                    </li>
+                                                    <li class="departments__item departments__item--menu"><a
+                                                            href="#">Construction Equipment<svg class="departments__link-arrow"
+                                                                width="6px" height="9px">
+                                                                <use
+                                                                    xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                                </use>
+                                                            </svg></a>
+                                                        <div class="departments__menu"><!-- .menu -->
+                                                            <ul class="menu menu--layout--classic">
+                                                                <li><a href="#">Excavators</a></li>
+                                                                <li><a href="#">Bulldozers</a></li>
+                                                                <li><a href="#">Cranes</a></li>
+                                                                <li><a href="#">Loaders</a></li>
+                                                            </ul><!-- .menu / end -->
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li class="departments__item departments__item--menu"><a
+                                                        href="#">Metal Products<svg class="departments__link-arrow"
+                                                            width="6px" height="9px">
+                                                            <use
+                                                                xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                            </use>
+                                                        </svg></a>
+                                                    <div class="departments__menu"><!-- .menu -->
+                                                        <ul class="menu menu--layout--classic">
+                                                            <li><a href="#">Steel Plates</a></li>
+                                                            <li><a href="#">Aluminum Sheets</a></li>
+                                                            <li><a href="#">Copper Wires</a></li>
+                                                            <li><a href="#">Metal Pipes</a></li>
+                                                        </ul><!-- .menu / end -->
+                                                    </div>
+                                                </li>
+
+
+
+
+                                                <li class="departments__item departments__item--menu"><a
+                                                    href="#"> Industrial Machinery<svg class="departments__link-arrow"
+                                                        width="6px" height="9px">
+                                                        <use
+                                                            xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                        </use>
+                                                    </svg></a>
+                                                <div class="departments__menu"><!-- .menu -->
+                                                    <ul class="menu menu--layout--classic">
+                                                        <li><a href="#">Lathes</a></li>
+                                                        <li><a href="#">CNC Machines</a></li>
+                                                        <li><a href="#">Milling Machines</a></li>
+                                                        <li><a href="#">Hydraulic Presses</a></li>
+                                                    </ul><!-- .menu / end -->
+                                                </div>
+
+
+
+                                                <li class="departments__item departments__item--menu"><a
+                                                    href="#"> Mining Equipment<svg class="departments__link-arrow"
+                                                        width="6px" height="9px">
+                                                        <use
+                                                            xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                        </use>
+                                                    </svg></a>
+                                                <div class="departments__menu"><!-- .menu -->
+                                                    <ul class="menu menu--layout--classic">
+                                                        <li><a href="#">Rock Drills</a></li>
+                                                        <li><a href="#">Crushing Machines</a></li>
+                                                        <li><a href="#">Mining Trucks</a></li>
+                                                        <li><a href="#">Conveyor Belts</a></li>
+                                                    </ul><!-- .menu / end -->
+                                                </div>
+
+
+                                                <li class="departments__item departments__item--menu"><a
+                                                    href="#">
+                                                    Agricultural Machinery<svg class="departments__link-arrow"
+                                                        width="6px" height="9px">
+                                                        <use
+                                                            xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                        </use>
+                                                    </svg></a>
+                                                <div class="departments__menu"><!-- .menu -->
+                                                    <ul class="menu menu--layout--classic">
+                                                        <li><a href="#">Tractors</a></li>
+                                                        <li><a href="#"> Harvesters</a></li>
+                                                        <li><a href="#"> Plows</a></li>
+                                                        <li><a href="#">  Irrigation Systems</a></li>
+                                                    </ul><!-- .menu / end -->
+                                                </div>
+
+
+                                                    
+                                                <li class="departments__item departments__item--menu"><a
+                                                    href="#">
+                                                    Heavy Vehicles<svg class="departments__link-arrow"
+                                                        width="6px" height="9px">
+                                                        <use
+                                                            xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-6x9">
+                                                        </use>
+                                                    </svg></a>
+                                                <div class="departments__menu"><!-- .menu -->
+                                                    <ul class="menu menu--layout--classic">
+                                                        <li><a href="#">Dump Trucks</a></li>
+                                                        <li><a href="#">Tankers</a></li>
+                                                        <li><a href="#">Forklifts</a></li>
+                                                        <li><a href="#">Trailers</a></li>
+                                                    </ul><!-- .menu / end -->
+                                                </div>                                            
+                                                </ul>
+                                            </div>
+
+
+
+
+
+
+                                            
+
+                                        </div><button class="departments__button"><svg class="departments__button-icon"
+                                                width="18px" height="14px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#menu-18x14"></use>
+                                            </svg> Shop By Category <svg class="departments__button-arrow" width="9px"
+                                                height="6px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-9x6"></use>
+                                            </svg></button>
+                                    </div><!-- .departments / end -->
+                                </div><!-- .nav-links -->
+
+
+
+
+
+
+
+
+
+                                <div class="nav-panel__nav-links nav-links">
+                                    <ul class="nav-links__list">
+                                        <li class="nav-links__item nav-links__item--with-submenu"><a
+                                                href="index.html"><span>Home</span></a>
+                                        </li>
+                                        <li class="nav-links__item nav-links__item--with-submenu"><a
+                                                href="#"><span>Products<svg class="nav-links__arrow" width="9px"
+                                                        height="6px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-9x6">
+                                                        </use>
+                                                    </svg></span></a>
+                                            <div class="nav-links__megamenu nav-links__megamenu--size--nl">
+                                                <!-- .megamenu -->
+                                                <div class="megamenu">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <ul class="megamenu__links megamenu__links--level--0">
+                                                                <li class="megamenu__item megamenu__item--with-submenu">
+                                                                    <a href="#">Services</a>
+                                                                    <ul
+                                                                        class="megamenu__links megamenu__links--level--1">
+                                                                        <li class="megamenu__item"><a
+                                                                                href="#">Heavy Metals</a></li>
+                                                                        <li class="megamenu__item"><a
+                                                                                href="#">Construction Machinery</a></li>
+                                                                        <li class="megamenu__item"><a
+                                                                                href="#">Caterpillar Equipment</a></li>
+                                                                        <li class="megamenu__item"><a
+                                                                                href="#">Industrial Equipment</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .megamenu / end -->
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="nav-links__item nav-links__item--with-submenu"><a
+                                                href="shop-grid-3-columns-sidebar.html"><span>Shop <svg
+                                                        class="nav-links__arrow" width="9px" height="6px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-9x6">
+                                                        </use>
+                                                    </svg></span></a>
+                                            <div class="nav-links__menu"><!-- .menu -->
+                                                <ul class="menu menu--layout--classic">
+                                                    {% if user.is_authenticated %}
+                                                    <li><a href="{% url 'cart_view' %}">Cart</a></li>
+                                                    <li><a href="{% url 'checkout_view' %}">Checkout</a></li>
+                                                    <li><a href="wishlist.html">Wishlist</a></l>
+                                                    {% endif %}    
+                                                </ul><!-- .menu / end -->
+                                            </div>
+                                        </li>
+                                        <li class="nav-links__item nav-links__item--with-submenu"><a
+                                                href="blog-classic.html"><span>Blog</span></a>
+                                        </li>
+                                        <li class="nav-links__item nav-links__item--with-submenu"><a
+                                                href="#"><span>About Us</span></a>
+                                        </li>
+                                        <li class="nav-links__item"><a href="contact-us.html"><span>Contact
+                                                    Us</span></a></li>
+                                                    {% if user.is_authenticated %}
+                                                    <li class="nav-links__item">
+                                                        <a href="{% url 'register_partner' %}">
+                                                            <span>Register as Partner</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li class="nav-links__item">
+                                                        <a href="{% url 'Authenticate_view' %}">
+                                                            <span>Login</span>
+                                                        </a>
+                                                    </li>
+                                                    {% endif %}
+
+                                    </ul>
+                                </div><!-- .nav-links / end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                {% if user.is_authenticated %}
+                                
+                                <div class="nav-panel__indicators">
+                                    <div class="indicator"><a href="wishlist.html" class="indicator__button"><span
+                                                class="indicator__area"><svg width="20px" height="20px">
+                                                    <use xlink:href="{% static 'images/sprite.svg' %}#heart-20"></use>
+                                                </svg> <span class="indicator__value">0</span></span></a></div>
+                                    <div class="indicator ">
+                                        <a href="{% url 'cart_view' %}" class="indicator__button">
+                                            <span class="indicator__area">
+                                                <svg width="20px" height="20px">
+                                                    <use xlink:href="{% static 'images/sprite.svg' %}#cart-20"></use>
+                                                </svg>
+                                                <span class="indicator__value" id="cart-count">0</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {% endif %}
+
+
+
+
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- desktop site__header / end --><!-- site__body -->
+        {% endblock %}
+
+
+        {% block contents %}
+
+
+        <div class="site__body"><!-- .block-slideshow -->
+            <div class="block-slideshow block-slideshow--layout--with-departments block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-9 offset-lg-3">
+                            <div class="block-slideshow__body">
+                                <div class="owl-carousel">
+                                    <a class="block-slideshow__slide" href="#">
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop"
+                                            style="background-image: url('{% static 'images/slides/slide-1.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile"
+                                            style="background-image: url('{% static 'images/slides/slide-1-mobile.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-content">
+                                            <div class="block-slideshow__slide-title">Quality Products<br>For Every Home & Business</div>
+                                            <div class="block-slideshow__slide-text">Discover our wide range of top-rated  supplies to meet your needs. Durable, reliable, and affordable!</div>
+                                            <div class="block-slideshow__slide-button"><span class="btn btn-primary btn-lg">Shop the Collection</span></div>
+                                        </div>
+                                    </a>
+                                    <a class="block-slideshow__slide" href="#">
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop"
+                                            style="background-image: url('{% static 'images/slides/slide-2.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile"
+                                            style="background-image: url('{% static 'images/slides/slide-2-mobile.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-content">
+                                            <div class="block-slideshow__slide-title">Precision Screwdrivers<br>For Professionals & DIY Enthusiasts</div>
+                                            <div class="block-slideshow__slide-text">Crafted for precision and durability. Perfect for all your projects, big and small.</div>
+                                            <div class="block-slideshow__slide-button"><span class="btn btn-primary btn-lg">Shop Now</span></div>
+                                        </div>
+                                    </a>
+                                    <a class="block-slideshow__slide" href="#">
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop"
+                                            style="background-image: url('{% static 'images/slides/slide-3.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile"
+                                            style="background-image: url('{% static 'images/slides/slide-3-mobile.jpg' %}')"></div>
+                                        <div class="block-slideshow__slide-content">
+                                            <div class="block-slideshow__slide-title">Exclusive Tools & Equipment<br>Only at Our Store</div>
+                                            <div class="block-slideshow__slide-text">Browse our exclusive collection of premium tools. Upgrade your toolkit with quality products.</div>
+                                            <div class="block-slideshow__slide-button"><span class="btn btn-primary btn-lg">See the Range</span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .block-slideshow / end -->
+            
+            <div class="block block-features block-features--layout--classic">
+                <div class="container">
+                    <div class="block-features__list">
+                        <div class="block-features__item">
+                            <div class="block-features__icon"><svg width="48px" height="48px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#fi-free-delivery-48"></use>
+                                </svg></div>
+                            <div class="block-features__content">
+                                <div class="block-features__title">Free Shipping</div>
+                                <div class="block-features__subtitle">For orders from $50</div>
+                            </div>
+                        </div>
+                        <div class="block-features__divider"></div>
+                        <div class="block-features__item">
+                            <div class="block-features__icon"><svg width="48px" height="48px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#fi-24-hours-48"></use>
+                                </svg></div>
+                            <div class="block-features__content">
+                                <div class="block-features__title">Support 24/7</div>
+                                <div class="block-features__subtitle">Call us anytime</div>
+                            </div>
+                        </div>
+                        <div class="block-features__divider"></div>
+                        <div class="block-features__item">
+                            <div class="block-features__icon"><svg width="48px" height="48px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#fi-payment-security-48"></use>
+                                </svg></div>
+                            <div class="block-features__content">
+                                <div class="block-features__title">100% Safety</div>
+                                <div class="block-features__subtitle">Only secure payments</div>
+                            </div>
+                        </div>
+                        <div class="block-features__divider"></div>
+                        <div class="block-features__item">
+                            <div class="block-features__icon"><svg width="48px" height="48px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#fi-tag-48"></use>
+                                </svg></div>
+                            <div class="block-features__content">
+                                <div class="block-features__title">Hot Offers</div>
+                                <div class="block-features__subtitle">Discounts up to 90%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .block-features / end --><!-- .block-products-carousel -->
+
+
+
+
+
+
+
+
+
+            <div class="block block-products-carousel" data-layout="grid-4">
+                <div class="container">
+                    <div class="block-header">
+                        <h3 class="block-header__title">Featured Products</h3>
+                        <div class="block-header__divider"></div>
+                        <ul class="block-header__groups-list">
+                            <li><button type="button" class="block-header__group block-header__group--active">All</button></li>
+                            <li><button type="button" class="block-header__group">Construction equipment</button></li>
+                          
+                        </ul>
+                        <div class="block-header__arrows-list">
+                            <button class="block-header__arrow block-header__arrow--left" type="button">
+                                <svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-7x11"></use>
+                                </svg>
+                            </button>
+                            <button class="block-header__arrow block-header__arrow--right" type="button">
+                                <svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-7x11"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <div class="block-products-carousel__slider">
+                        <div class="block-products-carousel__preloader"></div>
+                        <div class="owl-carousel">
+                            {% for product in featured_products %}
+                            <div class="block-products-carousel__column">
+                                <div class="block-products-carousel__cell">
+                                    <div class="product-card">
+                                        <button class="product-card__quickview" type="button">
+                                            <svg width="16px" height="16px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                            </svg>
+                                            <span class="fake-svg-icon"></span>
+                                        </button>
+                                        <div class="product-card__badges-list">
+                                            {% if product.product_tag == 'New Arrivals' %}
+                                            <div class="product-card__badge product-card__badge--new">New</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-card__image">
+                                            {#  {% url 'product_detail' product.id %}  #}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        </div>
+                                        <div class="product-card__info">
+                                            <div class="product-card__name">
+                                                {#  {% url 'product_detail' product.id %}  #}
+                                                <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a>
+                                            </div>
+                                            <div class="product-card__rating">
+                                                <div class="rating">
+                                                    <div class="rating__body">
+                                                        {% for i in "12345" %}
+                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                <g class="rating__fill">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                </g>
+                                                                <g class="rating__stroke">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                </g>
+                                                            </svg>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                            </div>
+                                            
+                                            <ul class="product-card__features-list">
+                                                <li>Material: {{ product.material }}</li>
+                                                <li>Dimensions: {{ product.dimensions }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-card__actions">
+                                            <div class="product-card__availability">
+                                                Availability: <span class="text-success">In Stock</span>
+                                            </div>
+                                            <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                            <div class="product-card__buttons">
+                                                <button class="btn btn-primary add-to-cart-btn"
+                                                type="button"
+                                                data-product-id="{{ product.id }}"
+                                                data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
+                                                data-csrf-token="{{ csrf_token }}">
+                                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                            <span class="btn-text">Add To Cart</span>
+                                        </button>
+                                        
+
+                                                <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
+                                                    <svg width="16px" height="16px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                    </svg>
+                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+
+
+
+
+            <div class="block block-banner">
+                <div class="container"><a href="#" class="block-banner__body">
+                        <div class="block-banner__image block-banner__image--desktop"
+                            style="background-image: url('{% static 'images/banners/banner-1.jpg' %}')"></div>
+                        <div class="block-banner__image block-banner__image--mobile"
+                            style="background-image: url('{% static 'images/banners/banner-1-mobile.jpg' %}')"></div>
+                        <div class="block-banner__title">Hundreds<br class="block-banner__mobile-br">Hand Tools</div>
+                        <div class="block-banner__text">Hammers, Chisels, Universal Pliers, Nippers, Jigsaws, Saws</div>
+                        <div class="block-banner__button"><span class="btn btn-sm btn-primary">Shop Now</span></div>
+                    </a></div>
+            </div><!-- .block-banner / end --><!-- .block-products -->
+
+
+
+
+
+
+
+
+            <div class="block block-products-carousel" data-layout="grid-4">
+                <div class="container">
+                    <div class="block-header">
+                        <h3 class="block-header__title">Bestsellers</h3>
+                        <div class="block-header__divider"></div>
+                        <div class="block-header__arrows-list">
+                            <button class="block-header__arrow block-header__arrow--left" type="button">
+                                <svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-7x11"></use>
+                                </svg>
+                            </button>
+                            <button class="block-header__arrow block-header__arrow--right" type="button">
+                                <svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-7x11"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <div class="block-products-carousel__slider">
+                        <div class="block-products-carousel__preloader"></div>
+                        <div class="owl-carousel">
+                            {% for product in bestsellers %}
+                            <div class="block-products-carousel__column">
+                                <div class="block-products-carousel__cell">
+                                    <div class="product-card">
+                                        <button class="product-card__quickview" type="button">
+                                            <svg width="16px" height="16px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                            </svg>
+                                            <span class="fake-svg-icon"></span>
+                                        </button>
+                                        <div class="product-card__badges-list">
+                                            {% if product.product_tag == 'New Arrivals' %}
+                                            <div class="product-card__badge product-card__badge--new">New</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-card__image">
+                                            {#  {% url 'product_detail' product.id %}  #}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        </div>
+                                        <div class="product-card__info">
+                                            <div class="product-card__name">
+                                                {#  {% url 'product_detail' product.id %}  #}
+                                                <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a>
+                                            </div>
+                                            <div class="product-card__rating">
+                                                <div class="rating">
+                                                    <div class="rating__body">
+                                                        {% for i in "12345" %}
+                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                <g class="rating__fill">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                </g>
+                                                                <g class="rating__stroke">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                </g>
+                                                            </svg>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                            </div>
+                                            
+                                            <ul class="product-card__features-list">
+                                                <li>Material: {{ product.material }}</li>
+                                                <li>Dimensions: {{ product.dimensions }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-card__actions">
+                                            <div class="product-card__availability">
+                                                Availability: <span class="text-success">In Stock</span>
+                                            </div>
+                                            <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                            <div class="product-card__buttons">
+                                                <button class="btn btn-primary add-to-cart-btn"
+                                                type="button"
+                                                data-product-id="{{ product.id }}"
+                                                data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
+                                                data-csrf-token="{{ csrf_token }}">
+                                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                            <span class="btn-text">Add To Cart</span>
+                                              </button>
+                                        
+
+                                                <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
+                                                    <svg width="16px" height="16px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                    </svg>
+                                                    <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <div class="block block--highlighted block-categories block-categories--layout--classic">
+                <div class="container">
+                    <div class="block-header">
+                        <h3 class="block-header__title">Popular Categories</h3>
+                        <div class="block-header__divider"></div>
+                    </div>
+                    <div class="block-categories__list">
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/Agricultural_machinery.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Agricultural Machinery</a></div>
+                                    <ul class="category-card__links">
+                                        <li><a href="#">Tractors</a></li>
+                                        <li><a href="#"> Harvesters</a></li>
+                                        <li><a href="#"> Plows</a></li>
+                                        <li><a href="#">  Irrigation Systems</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">572 Products</div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/constuction_equicpments.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Construction Equipment</a></div>
+                                    <ul class="category-card__links">
+                                        <li><a href="#">Excavators</a></li>
+                                       <li><a href="#">Bulldozers</a></li>
+                                        <li><a href="#">Cranes</a></li>
+                                     <li><a href="#">Loaders</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">134 Products</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/heavy_machinery.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Heavy Vehicles</a></div>
+                                    <ul class="category-card__links">
+                                        <li><a href="#">Dump Trucks</a></li>
+                                        <li><a href="#">Tankers</a></li>
+                                        <li><a href="#">Forklifts</a></li>
+                                        <li><a href="#">Trailers</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">301 Products</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/Mining_machenery.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Mining Equipment</a></div>
+                                    <ul class="category-card__links">
+                                        <li><a href="#">Rock Drills</a></li>
+                                        <li><a href="#">Crushing Machines</a></li>
+                                        <li><a href="#">Mining Trucks</a></li>
+                                        <li><a href="#">Conveyor Belts</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">79 Products</div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/Industral_machines.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Industrial Machinery</a></div>
+                                    <ul class="category-card__links">
+                                 <li><a href="#">Lathes</a></li>
+                                <li><a href="#">CNC Machines</a></li>
+                                <li><a href="#">Milling Machines</a></li>
+                                <li><a href="#">Hydraulic Presses</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">366 Products</div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="block-categories__item category-card category-card--layout--classic">
+                            <div class="category-card__body">
+                                <div class="category-card__image"><a href="#"><img
+                                            src="{% static 'images/popular_images/metal_products.jpeg' %}" alt=""></a></div>
+                                <div class="category-card__content">
+                                    <div class="category-card__name"><a href="#">Metal Products</a></div>
+                                    <ul class="category-card__links">
+                                        <li><a href="#">Steel Plates</a></li>
+                                        <li><a href="#">Aluminum Sheets</a></li>
+                                        <li><a href="#">Copper Wires</a></li>
+                                        <li><a href="#">Metal Pipes</a></li>
+                                    </ul>
+                                    <div class="category-card__all"><a href="#">Show All</a></div>
+                                    <div class="category-card__products">81 Products</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .block-categories / end --><!-- .block-products-carousel -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="block block-products-carousel" data-layout="horizontal">
+                <div class="container">
+                    <div class="block-header">
+                        <h3 class="block-header__title">New Arrivals</h3>
+                        <div class="block-header__divider"></div>
+                   
+                        <div class="block-header__arrows-list"><button
+                                class="block-header__arrow block-header__arrow--left" type="button"><svg width="7px"
+                                    height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-7x11"></use>
+                                </svg></button> <button class="block-header__arrow block-header__arrow--right"
+                                type="button"><svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-7x11"></use>
+                                </svg></button></div>
+                    </div>
+                    <div class="block-products-carousel__slider">
+                        <div class="block-products-carousel__preloader"></div>
+                        <div class="owl-carousel">
+                       
+                            {% for product in New_arrivals %}
+
+                            <div class="block-products-carousel__column">
+                                <div class="block-products-carousel__cell">
+                                    <div class="product-card"><button class="product-card__quickview" type="button"><svg
+                                                width="16px" height="16px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                            </svg> <span class="fake-svg-icon"></span></button>
+                                        <div class="product-card__badges-list">
+                                            {% if product.product_tag == 'New Arrivals' %}
+                                            <div class="product-card__badge product-card__badge--new">New</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-card__image">
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        </div>
+                                        <div class="product-card__info">
+                                            <div class="product-card__name">  <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a></div>
+                                            
+                                            
+                                            <div class="product-card__rating">
+                                                <div class="rating">
+                                                    <div class="rating__body">
+                                                        {% for i in "12345" %}
+                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                <g class="rating__fill">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                </g>
+                                                                <g class="rating__stroke">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                </g>
+                                                            </svg>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                            </div>
+
+
+
+
+                                            <ul class="product-card__features-list">
+                                                <li>Material: {{ product.material }}</li>
+                                                <li>Dimensions: {{ product.dimensions }}</li>
+                                            </ul>
+                                        </div>
+
+
+
+                                        <div class="product-card__actions">
+                                            <div class="product-card__availability">Availability: <span
+                                                    class="text-success">In Stock</span></div>
+                                            <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                            <div class="product-card__buttons"><button
+                                                    class="btn btn-primary product-card__addtocart" type="button">Add To
+                                                    Cart</button> <button
+                                                    class="btn btn-secondary product-card__addtocart product-card__addtocart--list"
+                                                    type="button">Add To Cart</button> <button
+                                                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                                    type="button"><svg width="16px" height="16px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                    </svg> <span
+                                                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button>
+                                                <button
+                                                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare"
+                                                    type="button"><svg width="16px" height="16px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#compare-16"></use>
+                                                    </svg> <span
+                                                        class="fake-svg-icon fake-svg-icon--compare-16"></span></button>
+                                            </div>
+                                        </div>
+
+                                        
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .block-products-carousel / end --><!-- .block-posts -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="block block-posts block-posts--layout--list-sm" data-layout="list-sm">
+                <div class="container">
+                    <div class="block-header">
+                        <h3 class="block-header__title">Latest News</h3>
+                        <div class="block-header__divider"></div>
+                        <div class="block-header__arrows-list"><button
+                                class="block-header__arrow block-header__arrow--left" type="button"><svg width="7px"
+                                    height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-7x11"></use>
+                                </svg></button> <button class="block-header__arrow block-header__arrow--right"
+                                type="button"><svg width="7px" height="11px">
+                                    <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-7x11"></use>
+                                </svg></button></div>
+                    </div>
+                    <div class="block-posts__slider">
+                        <div class="owl-carousel">
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-1.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Special Offers</a></div>
+                                    <div class="post-card__name"><a href="#">Philosophy That Addresses Topics Such As
+                                            Goodness</a></div>
+                                    <div class="post-card__date">October 19, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-2.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Latest News</a></div>
+                                    <div class="post-card__name"><a href="#">Logic Is The Study Of Reasoning And
+                                            Argument Part 2</a></div>
+                                    <div class="post-card__date">September 5, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-3.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">New Arrivals</a></div>
+                                    <div class="post-card__name"><a href="#">Some Philosophers Specialize In One Or More
+                                            Historical Periods</a></div>
+                                    <div class="post-card__date">August 12, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-4.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Special Offers</a></div>
+                                    <div class="post-card__name"><a href="#">A Variety Of Other Academic And
+                                            Non-Academic Approaches Have Been Explored</a></div>
+                                    <div class="post-card__date">Jule 30, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-5.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">New Arrivals</a></div>
+                                    <div class="post-card__name"><a href="#">Germany Was The First Country To
+                                            Professionalize Philosophy</a></div>
+                                    <div class="post-card__date">June 12, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-6.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Special Offers</a></div>
+                                    <div class="post-card__name"><a href="#">Logic Is The Study Of Reasoning And
+                                            Argument Part 1</a></div>
+                                    <div class="post-card__date">May 21, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-7.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Special Offers</a></div>
+                                    <div class="post-card__name"><a href="#">Many Inquiries Outside Of Academia Are
+                                            Philosophical In The Broad Sense</a></div>
+                                    <div class="post-card__date">April 3, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-8.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Latest News</a></div>
+                                    <div class="post-card__name"><a href="#">An Advantage Of Digital Circuits When
+                                            Compared To Analog Circuits</a></div>
+                                    <div class="post-card__date">Mart 29, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-9.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">New Arrivals</a></div>
+                                    <div class="post-card__name"><a href="#">A Digital Circuit Is Typically Constructed
+                                            From Small Electronic Circuits</a></div>
+                                    <div class="post-card__date">February 10, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                            <div class="post-card">
+                                <div class="post-card__image"><a href="#"><img src="{% static 'images/posts/post-10.jpg' %}"
+                                            alt=""></a></div>
+                                <div class="post-card__info">
+                                    <div class="post-card__category"><a href="#">Special Offers</a></div>
+                                    <div class="post-card__name"><a href="#">Engineers Use Many Methods To Minimize
+                                            Logic Functions</a></div>
+                                    <div class="post-card__date">January 1, 2019</div>
+                                    <div class="post-card__content">In one general sense, philosophy is associated with
+                                        wisdom, intellectual culture and a search for knowledge. In that sense, all
+                                        cultures...</div>
+                                    <div class="post-card__read-more"><a href="#" class="btn btn-secondary btn-sm">Read
+                                            More</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .block-posts / end --><!-- .block-brands -->
+
+
+
+
+
+            <div class="block block-product-columns d-lg-block d-none">
+                <div class="container">
+                    <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-4">
+                            <div class="block-header">
+                                <h3 class="block-header__title">Top Rated Products</h3>
+                                <div class="block-header__divider"></div>
+                            </div>
+
+                            {% for product in Popular %}
+                            {% if  forloop.counter <= 3  %}
+                            <div class="block-product-columns__column">
+                                <div class="block-product-columns__item">
+                                    <div class="product-card product-card--layout--horizontal"><button
+                                            class="product-card__quickview" type="button"><svg width="16px"
+                                                height="16px">
+                                                <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                            </svg> <span class="fake-svg-icon"></span></button>
+                                        <div class="product-card__badges-list">
+                                            {% if product.product_tag == 'New Arrivals' %}
+                                            <div class="product-card__badge product-card__badge--new">New</div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-card__image">
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a></div>
+                                        <div class="product-card__info">
+                                            <div class="product-card__name"><a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a></div>
+                                            
+                                            <div class="product-card__rating">
+                                                <div class="rating">
+                                                    <div class="rating__body">
+                                                        {% for i in "12345" %}
+                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                <g class="rating__fill">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                </g>
+                                                                <g class="rating__stroke">
+                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                </g>
+                                                            </svg>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                            </div>
+                   
+
+ 
+                                            <ul class="product-card__features-list">
+                                                <li>Material: {{ product.material }}</li>
+                                                <li>Dimensions: {{ product.dimensions }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-card__actions">
+                                            <div class="product-card__availability">Availability: <span
+                                                    class="text-success">In Stock</span></div>
+                                            <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                            <div class="product-card__buttons"> <button class="btn btn-primary add-to-cart-btn"
+                                                type="button"
+                                                data-product-id="{{ product.id }}"
+                                                data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
+                                                data-csrf-token="{{ csrf_token }}">
+                                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                            <span class="btn-text">Add To Cart</span>
+                                              </button> 
+                                             <button
+                                                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                                                    type="button"><svg width="16px" height="16px">
+                                                        <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                    </svg> <span
+                                                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-4">
+                            <div class="block-header">
+                                <h3 class="block-header__title">Special Offers</h3>
+                                <div class="block-header__divider"></div>
+                            </div>
+
+
+                            {% for product in Popular %}
+                            {% if forloop.counter > 3 and forloop.counter < 7 %}
+                                <div class="block-product-columns__column">
+                                    <div class="block-product-columns__item">
+                                        <div class="product-card product-card--layout--horizontal">
+                                            <button class="product-card__quickview" type="button">
+                                                <svg width="16px" height="16px">
+                                                    <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                                </svg>
+                                                <span class="fake-svg-icon"></span>
+                                            </button>
+                                            <div class="product-card__badges-list">
+                                                <div class="product-card__badge product-card__badge--sale">Sale</div>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <a href="{% url 'product_detail' product.id %}">
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                </a>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name">
+                                                    <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a>
+                                                </div>
+                                                <div class="product-card__rating">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            {% for i in "12345" %}
+                                                                <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                    </g>
+                                                                </svg>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                                </div>
+                                                <ul class="product-card__features-list">
+                                                    <li>Material: {{ product.material }}</li>
+                                                    <li>Dimensions: {{ product.dimensions }}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-card__actions">
+                                                <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
+                                                <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                                <div class="product-card__buttons">
+                                                    <button class="btn btn-primary add-to-cart-btn" type="button"
+                                                        data-product-id="{{ product.id }}"
+                                                        data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
+                                                        data-csrf-token="{{ csrf_token }}">
+                                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                        <span class="btn-text">Add To Cart</span>
+                                                    </button>
+                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
+                                                        <svg width="16px" height="16px">
+                                                            <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                        </svg>
+                                                        <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-4">
+                            <div class="block-header">
+                                <h3 class="block-header__title">Bestsellers</h3>
+                                <div class="block-header__divider"></div>
+                            </div>
+
+
+
+
+                            {% for product in featured_products %}
+                            {% if forloop.counter > 3 and forloop.counter < 7 %}
+                                <div class="block-product-columns__column">
+                                    <div class="block-product-columns__item">
+                                        <div class="product-card product-card--layout--horizontal">
+                                            <button class="product-card__quickview" type="button">
+                                                <svg width="16px" height="16px">
+                                                    <use xlink:href="{% static 'images/sprite.svg' %}#quickview-16"></use>
+                                                </svg>
+                                                <span class="fake-svg-icon"></span>
+                                            </button>
+                                            <div class="product-card__badges-list">
+                                                <div class="product-card__badge product-card__badge--sale">Sale</div>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <a href="{% url 'product_detail' product.id %}">
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                </a>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name">
+                                                    <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a>
+                                                </div>
+                                                <div class="product-card__rating">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            {% for i in "12345" %}
+                                                                <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
+                                                                    <g class="rating__fill">
+                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
+                                                                    </g>
+                                                                    <g class="rating__stroke">
+                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
+                                                                    </g>
+                                                                </svg>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
+                                                </div>
+                                                <ul class="product-card__features-list">
+                                                    <li>Material: {{ product.material }}</li>
+                                                    <li>Dimensions: {{ product.dimensions }}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-card__actions">
+                                                <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
+                                                <div class="product-card__prices">${{ product.price|floatformat:2|intcomma }}</div>
+                                                <div class="product-card__buttons">
+                                                    <button class="btn btn-primary add-to-cart-btn" type="button"
+                                                        data-product-id="{{ product.id }}"
+                                                        data-add-to-cart-url="{% url 'add_to_cart' product.id %}"
+                                                        data-csrf-token="{{ csrf_token }}">
+                                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                        <span class="btn-text">Add To Cart</span>
+                                                    </button>
+                                                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button">
+                                                        <svg width="16px" height="16px">
+                                                            <use xlink:href="{% static 'images/sprite.svg' %}#wishlist-16"></use>
+                                                        </svg>
+                                                        <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}==
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div><!-- .block-product-columns / end -->
+        </div><!-- site__body / end --><!-- site__footer -->
+       
+
+
+
+     <script>
+     document.addEventListener("DOMContentLoaded", function () {
+    const cartCountElement = document.getElementById("cart-count");
+
+    // Function to fetch and update cart count
+    function updateCartCount() {
+        const cachedCount = sessionStorage.getItem("cart_count");
+        if (cachedCount) {
+            cartCountElement.textContent = cachedCount;
+        }
+
+        fetch("{% url 'get_cart_count' %}")
+            .then(response => response.json())
+            .then(data => {
+                if (data.cart_count !== undefined) {
+                    cartCountElement.textContent = data.cart_count;
+                    sessionStorage.setItem("cart_count", data.cart_count); // Cache count
+                }
+            })
+            .catch(error => console.error("Error fetching cart count:", error));
+    }
+
+    // Initialize cart count on page load
+    updateCartCount();
+
+    // Add click event to Add-to-Cart buttons
+    document.querySelectorAll(".add-to-cart-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const btn = this;
+            const spinner = btn.querySelector(".spinner-border");
+            const btnText = btn.querySelector(".btn-text");
+            const productId = btn.getAttribute("data-product-id");
+            const csrfToken = btn.getAttribute("data-csrf-token");
+            const addToCartUrl = btn.getAttribute("data-add-to-cart-url");
+
+            if (!addToCartUrl || !productId) {
+                console.error("Product ID or Add-to-Cart URL is missing");
+                return;
+            }
+
+            spinner.classList.remove("d-none");
+            btnText.textContent = "";
+            btn.disabled = true;
+
+            fetch(addToCartUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify({ product_id: productId })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error("Failed to add to cart");
+                })
+                .then(() => {
+                    updateCartCount(); // Refresh cart count in real-time
+                    btnText.textContent = "Added";
+                    btn.classList.add("btn-success");
+
+                    setTimeout(() => {
+                        spinner.classList.add("d-none");
+                        btnText.textContent = "Add To Cart";
+                        btn.classList.remove("btn-success");
+                        btn.disabled = false;
+                    }, 2000);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error adding product to cart. Please try again.");
+                    spinner.classList.add("d-none");
+                    btnText.textContent = "Add To Cart";
+                    btn.disabled = false;
+                });
+        });
+    });
+});
+
+     </script>   
+
+
+    {% endblock %}

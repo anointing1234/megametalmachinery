@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>Megametal & Machinery Company - officail website</title
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i"><!-- css -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-4.2.1/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"><!-- js -->
+    <script src="{% static 'vendor/jquery-3.3.1/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-4.2.1/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'vendor/owl-carousel-2.3.4/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendor/nouislider-12.1.0/nouislider.min.js'%}"></script>
+    <script src="{% static 'js/number.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'vendor/svg4everybody-2.1.9/svg4everybody.min.js'%}"></script>
+    <script>svg4everybody();</script><!-- font - fontawesome -->
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-5.6.1/css/all.min.css'%}"><!-- font - stroyka -->
+    <link rel="stylesheet" href="{% static 'fonts/stroyka/stroyka.css'%}">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-6"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-97489509-6');</script>
+    <style>
+        .responsive-logo {
+  max-width: 100%; /* Ensures the image doesn't exceed the width of its container */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .mobile-header__logo img {
+    max-width:150px; /* Adjust size for smaller screens */
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    {% include '../sections/nav.html' %}
+    {% block header %}
+    {% include '../sections/header.html' %}
+    {% endblock %}
+    {% block contents %}
+    {% endblock %}
+    
+
+        
+    <footer class="site__footer">
+      <div class="site-footer">
+          <div class="container">
+              <div class="site-footer__widgets">
+                  <div class="row">
+                      <div class="col-12 col-md-6 col-lg-4">
+                          <div class="site-footer__widget footer-contacts">
+                              <h5 class="footer-contacts__title">Contact Us</h5>
+                              <div class="footer-contacts__text">Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.</div>
+                              <ul class="footer-contacts__contacts">
+                                  <li><i class="footer-contacts__icon fas fa-globe-americas"></i> 715 Fake Street,
+                                      New York 10021 USA</li>
+                                  <li><i class="footer-contacts__icon far fa-envelope"></i>info@megametalmachinery.com
+                                  </li>
+                                  <li><i class="footer-contacts__icon fas fa-mobile-alt"></i> (800) 060-0730,
+                                      (800) 060-0730</li>
+                                  <li><i class="footer-contacts__icon far fa-clock"></i> Mon-Sat 10:00pm - 7:00pm
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-6 col-md-3 col-lg-2">
+                          <div class="site-footer__widget footer-links">
+                              <h5 class="footer-links__title">Information</h5>
+                              <ul class="footer-links__list">
+                                  <li class="footer-links__item"><a href="#" class="footer-links__link">About
+                                          Us</a></li>
+                                  <li class="footer-links__item"><a href="#" class="footer-links__link">Store location</a></li>
+                                  <li class="footer-links__item"><a href="#" class="footer-links__link">Contact
+                                          Us</a></li> 
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-6 col-md-3 col-lg-2">
+                          <div class="site-footer__widget footer-links">
+                              <h5 class="footer-links__title">My Account</h5>
+                              <ul class="footer-links__list">
+                                  <li class="footer-links__item"><a href="#" class="footer-links__link">Order
+                                          History</a></li>
+                                  <li class="footer-links__item"><a href="#" class="footer-links__link">Wish
+                                          List</a></li>
+                                          <li class="footer-links__item"><a href="#" class="footer-links__link">cart</a></li>
+                                  <li class="footer-links__item"><a href="#"
+                                          class="footer-links__link">register as a partner</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-12 col-md-12 col-lg-4">
+                          <div class="site-footer__widget footer-newsletter">
+                              <h5 class="footer-newsletter__title">Newsletter</h5>
+                              <div class="footer-newsletter__text">Praesent pellentesque volutpat ex, vitae auctor
+                                  lorem pulvinar mollis felis at lacinia.</div>
+                              <form action="#" class="footer-newsletter__form"><label class="sr-only"
+                                      for="footer-newsletter-address">Email Address</label> <input type="text"
+                                      class="footer-newsletter__form-input form-control"
+                                      id="footer-newsletter-address" placeholder="Email Address..."> <button
+                                      class="footer-newsletter__form-button btn btn-primary">Subscribe</button>
+                              </form>
+                              <div class="footer-newsletter__text footer-newsletter__text--social">Follow us on
+                                  social networks</div>
+                              <ul class="footer-newsletter__social-links">
+                                  <li
+                                      class="footer-newsletter__social-link footer-newsletter__social-link--facebook">
+                                      <a href="https://themeforest.net/user/kos9" target="_blank"><i
+                                              class="fab fa-facebook-f"></i></a></li>
+                                  <li
+                                      class="footer-newsletter__social-link footer-newsletter__social-link--twitter">
+                                      <a href="https://themeforest.net/user/kos9" target="_blank"><i
+                                              class="fab fa-twitter"></i></a></li>
+                                  <li
+                                      class="footer-newsletter__social-link footer-newsletter__social-link--youtube">
+                                      <a href="https://themeforest.net/user/kos9" target="_blank"><i
+                                              class="fab fa-youtube"></i></a></li>
+                                  <li
+                                      class="footer-newsletter__social-link footer-newsletter__social-link--instagram">
+                                      <a href="https://themeforest.net/user/kos9" target="_blank"><i
+                                              class="fab fa-instagram"></i></a></li>
+                                
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="site-footer__bottom">
+                  <div class="site-footer__copyright"><a style="color: black;" target="_blank"
+                          href="https://www.templateshub.net">Megametal&MachineryCompany@copyright.com</a></div>
+                  <div class="site-footer__payments"><img src="{% static 'images/payments.png' %}" alt=""></div>
+              </div>
+          </div>
+      </div>
+  </footer><!-- site__footer / end -->
+
+
+
+
+
+
+
+</div><!-- site / end -->
+</body>
+
+</html>    

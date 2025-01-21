@@ -22,7 +22,7 @@
             <ul class="mobile-links mobile-links--level--0" data-collapse
                 data-collapse-opened-class="mobile-links__item--open">
                 <li class="mobile-links__item" data-collapse-item>
-                    <div class="mobile-links__item-title"><a href="index.html"
+                    <div class="mobile-links__item-title"><a href="{% url 'home' %}"
                             class="mobile-links__item-link">Home</a></div>
                 </li>
                 <li class="mobile-links__item" data-collapse-item>
@@ -276,7 +276,7 @@
                                         class="mobile-links__item-link">Checkout</a></div>
                             </li>
                             <li class="mobile-links__item" data-collapse-item>
-                                <div class="mobile-links__item-title"><a href="wishlist.html"
+                                <div class="mobile-links__item-title"><a href="#"
                                         class="mobile-links__item-link">Wishlist</a></div>
                             </li>
                             <li class="mobile-links__item" data-collapse-item>
@@ -288,21 +288,21 @@
                     {% endif %}
                 </li>
                 <li class="mobile-links__item" data-collapse-item>
-                    <div class="mobile-links__item-title"><a href="blog-classic.html"
-                            class="mobile-links__item-link">Blog</a> </div>
+                    <div class="mobile-links__item-title"><a href="#"
+                    class="mobile-links__item-link">Blog</a> </div>
                 </li> 
                 <li class="mobile-links__item" data-collapse-item>
-                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                    <div class="mobile-links__item-title"><a href="#"
                             class="mobile-links__item-link">About Us</a> </div>
                 </li>
                 <li class="mobile-links__item" data-collapse-item>
-                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                    <div class="mobile-links__item-title"><a href="#"
                             class="mobile-links__item-link">Contact
                             Us</a> </div>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="mobile-links__item" data-collapse-item>
-                    <div class="mobile-links__item-title"><a href="blog-classic.html"
+                    <div class="mobile-links__item-title"><a href="{% url 'register_partner' %}"
                             class="mobile-links__item-link">  Register as Partner</a> </div>
                 </li>
                 {% endif %}

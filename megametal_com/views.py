@@ -42,3 +42,32 @@ def checkout_view(request):
         'total_with_shipping': total_with_shipping,
     }
     return render(request,'home/checkout.html',context)
+
+
+def Excavators_view(request):
+    pass
+
+def Bulldozers_view(request):
+    pass
+
+def Cranes_view(request):
+    pass
+
+def Loaders_view(request):
+    pass
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

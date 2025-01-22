@@ -393,6 +393,8 @@ def register_partners(request):
 
 
 
+def products_view(request):
+    return render(request,'home/products.html')
 
 
 def custom_404_view(request, exception):

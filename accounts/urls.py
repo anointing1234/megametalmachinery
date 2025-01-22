@@ -24,6 +24,7 @@ urlpatterns = [
     path('orders/<str:order_id>/', views.order_details, name='order_details'),
     path('register_partner/',views.register_partners,name='register_partner'),
     path('logout_view/',views.logout_view,name='logout_view'),
+    path('products/',views.products_view,name='products'),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

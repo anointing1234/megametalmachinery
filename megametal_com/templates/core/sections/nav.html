@@ -340,6 +340,8 @@
                         </ul>
                     </div>
                 </li>
+
+{% comment %}                 
                 <li class="mobile-links__item" data-collapse-item>
                     <div class="mobile-links__item-title"><a data-collapse-trigger
                             class="mobile-links__item-link">Currency</a> <button class="mobile-links__item-toggle"
@@ -367,8 +369,9 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="mobile-links__item" data-collapse-item>
+                </li> {% endcomment %}
+
+                {% comment %} <li class="mobile-links__item" data-collapse-item>
                     <div class="mobile-links__item-title"><a data-collapse-trigger
                             class="mobile-links__item-link">Language</a> <button class="mobile-links__item-toggle"
                             type="button" data-collapse-trigger><svg class="mobile-links__item-arrow" width="12px"
@@ -400,6 +403,8 @@
                         </ul>
                     </div>
                 </li>
+
+                 {% endcomment %}
             </ul>
         </div>
     </div>
@@ -497,7 +502,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="topbar__item">
+                        {% comment %} <div class="topbar__item">
                             <div class="topbar-dropdown"><button class="topbar-dropdown__btn"
                                     type="button">Currency: <span class="topbar__item-value">USD</span> <svg
                                         width="7px" height="5px">
@@ -512,8 +517,10 @@
                                     </ul><!-- .menu / end -->
                                 </div>
                             </div>
-                        </div>
-                        <div class="topbar__item">
+                        </div> {% endcomment %}
+
+
+                        {% comment %} <div class="topbar__item">
                             <div class="topbar-dropdown"><button class="topbar-dropdown__btn"
                                     type="button">Language: <span class="topbar__item-value">EN</span> <svg
                                         width="7px" height="5px">
@@ -549,7 +556,9 @@
                                     </ul><!-- .menu / end -->
                                 </div>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
+
+
                     </div>
                 </div>
             </div><!-- .topbar / end -->

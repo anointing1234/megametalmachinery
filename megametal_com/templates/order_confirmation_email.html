@@ -1,0 +1,125 @@
+<html>
+<head>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        /* Order Summary Section */
+        .order-summary {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .order-summary h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .order-summary pre {
+            font-size: 14px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Order Confirmation - {{ order.order_id }}</h1>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="order-summary">
+        <h2>Order Summary:</h2>
+        <pre>{{ formatted_product_details }}</pre>
+    </div>
+
+    <!-- Delivery Date Section -->
+    <div class="delivery-date">
+        <h2>Delivery Date Range:</h2>
+        <p>{{ formatted_delivery_date }}</p>
+    </div>
+
+        <div class="view-order-button">
+        <a href="https://megametalmachinery.com/Accounts/orders/{{ order.order_id }}/" class="button">View Order</a>
+    </div>
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>Thank you for your order!</p>
+        <p>If you have any questions, feel free to <a href="mailto:info@megametalmachinery.com">contact us</a>.</p>
+    </div>
+
+</body>
+</html>

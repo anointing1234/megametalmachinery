@@ -37,7 +37,6 @@ ALLOWED_HOSTS = ["megametalmachinery.com"]
 DEBUG = False
 
 
-
 # Application definition
 
 # #Application definition
@@ -86,21 +85,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'megametal.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE':'django.db.backends.postgresql',
-#         'NAME':'megametal',
-#         'USER':'postgres',
-#         'PASSWORD':'1234',
-#         'HOST':'localhost',  
-#     }
-# }
 
 
 DATABASES = {
@@ -176,4 +160,4 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 COMPANY_EMAIL = 'megametalmachinery@gmail.com'
-
+COMPANY_LOGO = '/static/images/logos/machinery_logo_web.webp'

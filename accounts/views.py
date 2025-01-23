@@ -13,7 +13,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout as auth_logout,login as auth_login,authenticate
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.utils import timezone
@@ -89,11 +89,12 @@ def login_view(request):
     return render(request, 'forms/Auth.html', {'login_form': login_form})
 
 def logout_view(request):
-    auth_logout(request)
+    register_form = RegisterForm()
     login_form = LoginForm()
     return render(request,'forms/Auth.html',
     { 
-     'login':login_form                                         
+    'login_form': login_form,
+    'register_form': register_form,                                       
     })
 
 def cart_view(request):
@@ -373,24 +374,24 @@ def register_partners(request):
 
             # Send the email
             company_email = settings.COMPANY_EMAIL  # Ensure this is set in your settings
-            send_mail(
+            email = EmailMessage(
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                [company_email],
-                fail_silently=False,
+                [company_email]
             )
+            email.content_subtype = "plain"  # Explicitly set content type to plain text
+            email.charset = 'utf-8'  # Ensure UTF-8 encoding
+            email.send(fail_silently=False)
 
             # Show success message
             messages.success(request, "Thank you for registering as a partner! We will get back to you shortly.")
-            return redirect('some_success_page')  # Replace with the name of the success page/view
+            return render(request, 'home/partnersuccess.html')  # Replace with the name of the success page/view
 
     else:
         form = PartnerRegistrationForm()
 
     return render(request, 'forms/register_partner.html', {'form': form})
-
-
 
 
 def products_view(request):

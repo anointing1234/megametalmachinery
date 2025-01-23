@@ -6,6 +6,7 @@ from django.views.static import serve
 from django.conf.urls import handler404, handler500
 
 
+
 urlpatterns = [
     path('Authenticate_view/', views.Authenticate_view, name='Authenticate_view'),
     path('login_view/',views.login_view,name='login_view'),

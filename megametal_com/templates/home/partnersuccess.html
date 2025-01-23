@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Partnership registeration Success page for Megametal & Machinery Company. Thank you for partnering with us.">
+    <title>Partnership registeration success - Megametal & Machinery Company</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .success-icon {
+            font-size: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+        <div class="bg-white shadow rounded p-5 text-center">
+            <div class="text-success mb-4 success-icon">
+                <i class="bi bi-check-circle"></i>
+            </div>
+            <h3 class="mb-3">Partnership Registration Successful!</h3>
+            <p class="lead text-muted mb-4">
+                Thank you for partnering with us. We will notify you with a message containing the details soon.
+            </p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="{% url 'home' %}" class="btn btn-outline-dark btn-sm px-4" aria-label="Go to Homepage">Go to Homepage</a>
+            </div>
+        </div>
+        <footer class="mt-5 text-center text-muted small">
+            © 2025 Megametal & Machinery Company. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

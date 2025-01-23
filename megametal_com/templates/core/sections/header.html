@@ -30,10 +30,10 @@
                                   </svg></a>
                               <div class="departments__menu"><!-- .menu -->
                                   <ul class="menu menu--layout--classic">
-                                      <li><a href="#">Excavators</a></li>
-                                      <li><a href="#">Bulldozers</a></li>
-                                      <li><a href="#">Cranes</a></li>
-                                      <li><a href="#">Loaders</a></li>
+                                      <li><a href="{% url 'Excavators' %}">Excavators</a></li>
+                                      <li><a href="{% url 'Bulldozers' %}">Bulldozers</a></li>
+                                      <li><a href="{% url 'Cranes' %}">Cranes</a></li>
+                                      <li><a href="{% url 'Loaders' %}">Loaders</a></li>
                                   </ul><!-- .menu / end -->
                               </div>
                           </li>
@@ -47,10 +47,10 @@
                               </svg></a>
                           <div class="departments__menu"><!-- .menu -->
                               <ul class="menu menu--layout--classic">
-                                  <li><a href="#">Steel Plates</a></li>
-                                  <li><a href="#">Aluminum Sheets</a></li>
-                                  <li><a href="#">Copper Wires</a></li>
-                                  <li><a href="#">Metal Pipes</a></li>
+                                  <li><a href="{% url 'SteelPlates' %}">Steel Plates</a></li>
+                                <li><a href="{% url 'AluminumSheets' %}">Aluminum Sheets</a></li>
+                                  <li><a href="{% url 'CopperWires' %}">Copper Wires</a></li>
+                                  <li><a href="{% url 'MetalPipes' %}">Metal Pipes</a></li>
                               </ul><!-- .menu / end -->
                           </div>
                       </li>
@@ -67,10 +67,10 @@
                           </svg></a>
                       <div class="departments__menu"><!-- .menu -->
                           <ul class="menu menu--layout--classic">
-                              <li><a href="#">Lathes</a></li>
-                              <li><a href="#">CNC Machines</a></li>
-                              <li><a href="#">Milling Machines</a></li>
-                              <li><a href="#">Hydraulic Presses</a></li>
+                              <li><a href="{% url 'Lathes' %}">Lathes</a></li>
+                              <li><a href="{% url 'CNCMachines' %}">CNC Machines</a></li>
+                              <li><a href="{% url 'MillingMachines' %}">Milling Machines</a></li>
+                              <li><a href="{% url 'HydraulicPresses' %}">Hydraulic Presses</a></li>
                           </ul><!-- .menu / end -->
                       </div>
 
@@ -85,10 +85,10 @@
                           </svg></a>
                       <div class="departments__menu"><!-- .menu -->
                           <ul class="menu menu--layout--classic">
-                              <li><a href="#">Rock Drills</a></li>
-                              <li><a href="#">Crushing Machines</a></li>
-                              <li><a href="#">Mining Trucks</a></li>
-                              <li><a href="#">Conveyor Belts</a></li>
+                              <li><a href="{% url 'RockDrill' %}">Rock Drills</a></li>
+                              <li><a href="{% url 'CrushingMachines' %}">Crushing Machines</a></li>
+                              <li><a href="{% url 'MiningTrucks' %}">Mining Trucks</a></li>
+                              <li><a href="{% url 'ConveyorBelts' %}">Conveyor Belts</a></li>
                           </ul><!-- .menu / end -->
                       </div>
 
@@ -103,10 +103,10 @@
                           </svg></a>
                       <div class="departments__menu"><!-- .menu -->
                           <ul class="menu menu--layout--classic">
-                              <li><a href="#">Tractors</a></li>
-                              <li><a href="#"> Harvesters</a></li>
-                              <li><a href="#"> Plows</a></li>
-                              <li><a href="#">  Irrigation Systems</a></li>
+                              <li><a href="{% url 'Tractors' %}">Tractors</a></li>
+                              <li><a href="{% url 'Harvesters' %}"> Harvesters</a></li>
+                              <li><a href="{% url 'Plows'  %}"> Plows</a></li>
+                
                           </ul><!-- .menu / end -->
                       </div>
 
@@ -122,10 +122,10 @@
                           </svg></a>
                       <div class="departments__menu"><!-- .menu -->
                           <ul class="menu menu--layout--classic">
-                              <li><a href="#">Dump Trucks</a></li>
-                              <li><a href="#">Tankers</a></li>
-                              <li><a href="#">Forklifts</a></li>
-                              <li><a href="#">Trailers</a></li>
+                              <li><a href="{% url 'Dumptrucks' %}">Dump Trucks</a></li>
+                              <li><a href="{% url 'Tankers' %}">Tankers</a></li>
+                              <li><a href="{% url 'Forklifts' %}">Forklifts</a></li>
+                              <li><a href="{% url 'Trailers' %}">Trailers</a></li>
                           </ul><!-- .menu / end -->
                       </div>                                            
                       </ul>
@@ -153,38 +153,7 @@
                     <li class="nav-links__item nav-links__item--with-submenu"><a
                             href="{% url 'home' %}"><span>Home</span></a>
                     </li>
-                    <li class="nav-links__item nav-links__item--with-submenu"><a
-                            href="#"><span>Products<svg class="nav-links__arrow" width="9px"
-                                    height="6px">
-                                    <use xlink:href="{% static 'images/sprite.svg'%} #arrow-rounded-down-9x6">
-                                    </use>
-                                </svg></span></a>
-                        <div class="nav-links__megamenu nav-links__megamenu--size--nl">
-                            <!-- .megamenu -->
-                            <div class="megamenu">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <ul class="megamenu__links megamenu__links--level--0">
-                                            <li class="megamenu__item megamenu__item--with-submenu">
-                                                <a href="#">Services</a>
-                                                <ul
-                                                    class="megamenu__links megamenu__links--level--1">
-                                                    <li class="megamenu__item"><a
-                                                            href="#">Heavy Metals</a></li>
-                                                    <li class="megamenu__item"><a
-                                                            href="#">Construction Machinery</a></li>
-                                                    <li class="megamenu__item"><a
-                                                            href="#">Caterpillar Equipment</a></li>
-                                                    <li class="megamenu__item"><a
-                                                            href="#">Industrial Equipment</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div><!-- .megamenu / end -->
-                        </div>
-                    </li>
+                   
                     
                     <li class="nav-links__item nav-links__item--with-submenu"><a
                             href="shop-grid-3-columns-sidebar.html"><span>Shop <svg

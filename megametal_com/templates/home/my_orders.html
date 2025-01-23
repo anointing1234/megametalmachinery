@@ -3,159 +3,124 @@
 {% load humanize %}
 {% block contents %}
 
-
-  
-
-
-
-
-
-      
-      <!-- site__body -->
-      <div class="site__body">
-        <div class="page-header">
-          <div class="page-header__container container">
+<!-- site__body -->
+<div class="site__body">
+    <div class="page-header">
+        <div class="page-header__container container">
             <div class="page-header__breadcrumb">
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="index.html">Home</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
-                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
-                    </svg>
-                  </li>
-                  <li class="breadcrumb-item">
-                    <a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
-                      <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
-                    </svg>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">Orders</li>
-                </ol>
-              </nav>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                            </svg>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px" height="9px">
+                                <use xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-6x9"></use>
+                            </svg>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </nav>
             </div>
             <div class="page-header__title">
-              <h1>Orders</h1>
+                <h1>Orders</h1>
             </div>
-          </div>
         </div>
+    </div>
 
-
-        <div class="my-orders block py-5">
-            <div class="container">
-                <!-- Page Title -->
-                <h2 class="text-start mb-5 text-uppercase" style="font-weight: bold; font-size: 1.8rem;">My Orders</h2>
-                
-                {% if orders %}
-                <div class="row">
-                    {% for order in orders %}
-                    <div class="col-12 mb-4">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body">
-                                <!-- Order Header -->
-                                <div class="mb-3">
-                                    <h5 style="font-weight: bold; font-size: 1.4rem;">Order ID: {{ order.order_id }}</h5>
-                                    <p style="margin-bottom: 0;">
-                                        <strong>Status:</strong> 
-                                        {% if order.status == 'completed' %}
-                                            Confirmed and Shipped
-                                        {% elif order.status == 'cancelled' %}
-                                            Failed
-                                        {% else %}
-                                            {{ order.get_status_display }}
-                                        {% endif %}
-                                    </p>
-                                </div>
-                                
-                                
-                                <!-- Order Image -->
+    <div class="my-orders block py-5">
+        <div class="container">
+      
+            {% if orders %}
+            <div class="row">
+                {% for order in orders %}
+                <div class="col-12 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <!-- Order Header -->
+                            <div class="mb-3">
+                                <h5 style="font-weight: bold; font-size: 1.4rem;">Order ID: {{ order.order_id }}</h5>
+                                <p style="margin-bottom: 0;">
+                                    <strong>Status:</strong> 
+                                    {% if order.status == 'completed' %}
+                                        Confirmed and Shipped
+                                    {% elif order.status == 'cancelled' %}
+                                        Failed
+                                    {% else %}
+                                        {{ order.get_status_display }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            
+                            <!-- Order Image and Product Name Side by Side -->
+                            <div class="d-flex align-items-center mb-4">
                                 {% if order.order_image %}
-                                <div class="text-start mb-4">
-                                    <img src="{{ order.order_image.url }}" alt="Order Image" class="img-fluid rounded shadow-sm" style="max-width: 150px;">
+                                <div class="me-3">
+                                    <img src="{{ order.order_image.url }}" alt="Order Image for Order ID {{ order.order_id }}" class="img-fluid rounded shadow-sm" style="max-width: 150px;">
                                 </div>
                                 {% endif %}
-                                
-                                <!-- Product Preview Section -->
-                                <h6 style="font-weight: bold; margin-bottom:20px;">Product Summary</h6>
-                                <div class="row">
-                                    {% for product in order.product_details_parsed %}
-                                    {% if forloop.counter <= 3 %}
-                                    <div class="col-md-4 mb-3 text-center">
-                                        <p class="mt-2"><strong> Product: {{ product.name }}</strong></p>
+                                <div style="margin-left: 15px;"> <!-- Add margin-left to create space -->
+                                    <h6 style="font-weight: bold; margin-bottom: 0;">Product Summary</h6>
+                                    <div class="row">
+                                        {% for product in order.product_details_parsed %}
+                                        {% if forloop.counter <= 3 %}
+                                        <div class="col-md-12 mb-2 text-start">
+                                            <p class="mt-2"><strong>Product: {{ product.name }}</strong></p>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                        
+                                        {% if order.product_details_parsed|length > 3 %}
+                                        <div class="col-md-12 text-center">
+                                            <p class="text-muted">+{{ order.product_details_parsed|length|add:"-3" }} more product(s)</p>
+                                        </div>
+                                        {% endif %}
                                     </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                    
-                                    {% if order.product_details_parsed|length > 3 %}
-                                    <div class="col-md-12 text-center">
-                                        <p class="text-muted">+{{ order.product_details_parsed|length|add:"-3" }} more product(s)</p>
-                                    </div>
-                                    {% endif %}
                                 </div>
-                                
-                                <!-- View Details Button -->
-                                <div class="text-end mt-3">
-                                    <a href="{% url 'order_details' order.order_id %}" class="btn btn-outline-dark btn-sm">
-                                        View Details
-                                    </a>
-                                </div>
+                            </div>
+                            
+                            <!-- View Details Button -->
+                            <div class="text-end mt-3">
+                                <a href="{% url 'order_details' order.order_id %}" class="btn btn-outline-dark btn-sm">
+                                    View Details
+                                </a>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
-                {% else %}
-                <p class="text-start">You have no orders at the moment.</p>
-                {% endif %}
+                {% endfor %}
             </div>
+            {% else %}
+            <p class="text-start">You have no orders at the moment.</p>
+            {% endif %}
         </div>
-        
+    </div>
+</div>
+<!-- site__body / end -->
 
-          </div>
-        </div>
-        
-
-
-
-
-
-
-        
-
-
-
-      </div>
-      <!-- site__body / end -->
-
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Function to fetch the cart count
-            function updateCartCount() {
-                fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
-                    .then(response => response.json())
-                    .then(data => {
-                        const cartCountElement = document.getElementById("cart-count");
-                        if (cartCountElement) {
-                            cartCountElement.textContent = data.cart_count; // Update the cart count
-                        }
-                    })
-                    .catch(error => console.error("Error fetching cart count:", error));
-            }
-    
-            // Call updateCartCount on page load
-            updateCartCount();
-    
-            // Optionally, re-fetch cart count at intervals or trigger it on specific actions
-        });
-    </script>
-
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Function to fetch the cart count
+        function updateCartCount() {
+            fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
+                .then(response => response.json())
+                .then(data => {
+                    const cartCountElement = document.getElementById("cart-count");
+                    if (cartCountElement) {
+                        cartCountElement.textContent = data.cart_count; // Update the cart count
+                    }
+                })
+                .catch(error => console.error("Error fetching cart count:", error));
+        }
+
+        // Call updateCartCount on page load
+        updateCartCount();
+    });
+
     $(document).ready(function() {
         // Increase quantity
         $('.increase-quantity').on('click', function() {
@@ -170,6 +135,9 @@
                     setTimeout(function() {
                         location.reload(); // Reload the page after a slight delay
                     }, 100); // Delay in milliseconds
+                },
+                error: function() {
+                    alert("Error increasing quantity. Please try again.");
                 }
             });
         });
@@ -187,6 +155,9 @@
                     setTimeout(function() {
                         location.reload(); // Reload the page after a slight delay
                     }, 100); // Delay in milliseconds
+                },
+                error: function() {
+                    alert("Error decreasing quantity. Please try again.");
                 }
             });
         });
@@ -204,14 +175,13 @@
                     setTimeout(function() {
                         location.reload(); // Reload the page after a slight delay
                     }, 100); // Delay in milliseconds
+                },
+                error: function() {
+                    alert("Error removing item. Please try again.");
                 }
             });
         });
     });
 </script>
 
-
-
-
-
-    {% endblock %}
+{% endblock %}

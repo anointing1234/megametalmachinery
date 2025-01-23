@@ -17,8 +17,12 @@ from decimal import Decimal
 from django.contrib.auth import get_user_model
 import uuid
 from django.conf import settings
+import json
 
+import locale
 
+# Set the locale to the user's locale (you can adjust this as needed, e.g., for US English)
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
 
@@ -300,6 +304,48 @@ class Order(models.Model):
             end_date = start_date + timedelta(days=7)  # A 7-day range
             return f"Between {start_date.strftime('%d %B')} and {end_date.strftime('%d %B')}"
         return "Delivery date unavailable"
+
+
+    def format_product_details(self):
+        """Format the product details into a readable string."""
+        try:
+            # Load the product details from JSON
+            product_details = json.loads(self.product_details)
+
+            # Initialize a list to store formatted details
+            formatted_details = []
+      
+            # Check if the 'products' key exists and contains products
+            if 'products' in product_details and isinstance(product_details['products'], list):
+                for item in product_details['products']:
+                    # Safely extract product details
+                    name = item.get('name', 'N/A')
+                    quantity = item.get('quantity', 'N/A')
+                    price = item.get('price', 'N/A')
+                    image_url = item.get('image', 'N/A')
+
+                                    # Format the price with commas and two decimal places
+                    formatted_price = locale.currency(float(price), grouping=True) if price != 'N/A' else 'N/A'
+
+                    # Format the details in a user-friendly way
+                    formatted_details.append(f"Product: {name}\n"
+                                             f"Quantity: {quantity}\n"
+                                             f"Price: {formatted_price}\n"
+                                            )
+
+            # Return the formatted details as a string, each product separated by two line breaks
+            return "\n\n".join(formatted_details) if formatted_details else "No products found."
+
+        except json.JSONDecodeError:
+            # Handle JSON parsing error
+            print("Error: Invalid JSON format in product_details.")
+            return "Invalid product details format."
+
+        except Exception as e:
+            # Handle any other exceptions
+            print(f"Error formatting product details: {e}")
+            return "Unable to format product details"
+
 
     def __str__(self):
         return f"Order {self.order_id} - {self.email}"

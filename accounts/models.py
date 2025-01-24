@@ -21,9 +21,10 @@ import json
 
 import locale
 
-# Set the locale to the user's locale (you can adjust this as needed, e.g., for US English)
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-
+try:
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+except locale.Error:
+    locale.setlocale(locale.LC_ALL, 'C')  # Fallback to the default "C" locale
 
 
 

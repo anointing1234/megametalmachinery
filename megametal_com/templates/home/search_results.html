@@ -52,14 +52,14 @@
                             {% endfor %}
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="shop-layout__content">
                 <div class="block">
                     <div class="products-view">
                         <div class="products-view__options">
                             <div class="view-options">
-                                <div class="view-options__ layout">
+                                <div class="view-options__layout">
                                     <div class="layout-switcher">
                                         <div class="layout-switcher__list">
                                             <button data-layout="grid-3-sidebar" data-with-features="false" title="Grid" type="button" class="layout-switcher__button">
@@ -93,7 +93,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="view-options__control">
+                                 <div class="view-options__control">
                                     <label for="">Show</label>
                                     <div>
                                         <select class="form-control form-control-sm" name="" id="">
@@ -106,6 +106,11 @@
                         </div>
                         <div class="products-view__list products-list" data-layout="list" data-with-features="false">
                             <div class="products-list__body">
+                                {% if RockDrill_products.count == 0 %}
+                                <div class="no-results">
+                                    <p>No results found for this product.</p>
+                                </div>
+                                {% else %}
                                 {% for product in RockDrill_products %}
                                 <div class="products-list__item">
                                     <div class="product-card">
@@ -147,7 +152,7 @@
                                                 </div>
                                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
                                             </div>
-                                            <ul class=" product-card__features-list">
+                                            <ul class="product-card__features-list">
                                                 <li>Material: {{ product.material }}</li>
                                                 <li>Dimensions: {{ product.dimensions }}</li>
                                             </ul>
@@ -185,6 +190,7 @@
                                     </div>
                                 </div>
                                 {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
 

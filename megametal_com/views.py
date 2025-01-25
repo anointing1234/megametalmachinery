@@ -286,6 +286,27 @@ def Trailers_view(request):
 
 
 
+def product_search(request):
+    query = request.GET.get('search', '')
+    print(f"Search query: {query}")  # Debugging line
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+        print(f"Found products: {products}")  # Debugging line
+    else:
+        products = Product.objects.none()
+
+    paginator = Paginator(products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'home/search_results.html', {
+        'RockDrill_products': page_obj,
+        'RockDrill_count': products.count(),
+        'search_query': query,
+    })
+
+
+
 
 
 

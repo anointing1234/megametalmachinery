@@ -325,22 +325,22 @@
                                 </h5>
                               </a>
                               
-                        <div class="mobile-header__search">
-                            <form class="mobile-header__search-form" action="#"><input
-                                    class="mobile-header__search-input" name="search"
-                                    placeholder="Search over 10,000 products" aria-label="Site search" type="text"
-                                    autocomplete="off"> <button
-                                    class="mobile-header__search-button mobile-header__search-button--submit"
-                                    type="submit"><svg width="20px" height="20px">
-                                        <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
-                                    </svg></button> <button
-                                    class="mobile-header__search-button mobile-header__search-button--close"
-                                    type="button"><svg width="20px" height="20px">
-                                        <use xlink:href="{% static 'images/sprite.svg' %}#cross-20"></use>
-                                    </svg></button>
-                                <div class="mobile-header__search-body"></div>
-                            </form>
-                        </div>
+                              <div class="mobile-header__search">
+                                <form class="mobile-header__search-form" action="{% url 'product_search' %}" method="GET">
+                                    <input class="mobile-header__search-input" name="search" placeholder="Search over 10,000 products" aria-label="Site search" type="text" autocomplete="off">
+                                    <button class="mobile-header__search-button mobile-header__search-button--submit" type="submit">
+                                        <svg width="20px" height="20px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
+                                        </svg>
+                                    </button>
+                                    <button class="mobile-header__search-button mobile-header__search-button--close" type="button">
+                                        <svg width="20px" height="20px">
+                                            <use xlink:href="{% static 'images/sprite.svg' %}#cross-20"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="mobile-header__search-body"></div>
+                                </form>
+                            </div>
                         <div class="mobile-header__indicators">
                             <div class="indicator indicator--mobile-search indicator--mobile d-sm-none"><button
                                     class="indicator__button"><span class="indicator__area"><svg width="20px"
@@ -409,12 +409,13 @@
                 <img src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
                 <div class="site-header__search">
                     <div class="search">
-                        <form class="search__form" action="#"><input class="search__input" name="search"
-                                placeholder="Search over 10,000 products" aria-label="Site search" type="text"
-                                autocomplete="off"> <button class="search__button" type="submit"><svg width="20px"
-                                    height="20px">
+                        <form class="search__form" action="{% url 'product_search' %}" method="GET">
+                            <input class="search__input" name="search" placeholder="Search over 10,000 products" aria-label="Site search" type="text" autocomplete="off">
+                            <button class="search__button" type="submit">
+                                <svg width="20px" height="20px">
                                     <use xlink:href="{% static 'images/sprite.svg' %}#search-20"></use>
-                                </svg></button>
+                                </svg>
+                            </button>
                             <div class="search__border"></div>
                         </form>
                     </div>

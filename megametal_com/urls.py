@@ -44,7 +44,7 @@ urlpatterns = [
     path('Forklifts/',views.Forklifts_view,name='Forklifts'),
     path('Trailers/',views.Trailers_view,name='Trailers'),
     
-    
+    path('search/',views.product_search, name='product_search'),
    
                                                           
    

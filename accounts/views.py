@@ -565,4 +565,4 @@ def reset_password_view(request):
     else:
         form = PasswordResetForm()  # This is now correctly instantiated
 
-    return render(request, 'reset_password.html', {'form': form})
+    return render(request,'home/reset_password.html', {'form': form})

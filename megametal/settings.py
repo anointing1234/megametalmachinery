@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ["megametalmachinery.com"]
 # SECURITY WARNING: don't run with debug turned on in production!
 # ALLOWED_HOSTS = ['*']
 
-DEBUG = False
+DEBUG = True
 
 
 # Application definition
@@ -136,12 +136,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 
-if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

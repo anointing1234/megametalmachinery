@@ -16,22 +16,6 @@
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Header Section */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header img {
-            max-width: 200px;
-            height: auto;
-        }
-
         /* Order Summary Section */
         .order-summary {
             background-color: #ffffff;
@@ -47,14 +31,22 @@
             margin-bottom: 15px;
         }
 
-        .order-summary pre {
-            font-size: 14px;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin: 0;
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
         }
 
         /* Footer */
@@ -76,6 +68,7 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
         .button {
             display: inline-block;
             background-color: #007BFF;
@@ -94,31 +87,46 @@
     </style>
 </head>
 <body>
-
     <!-- Header Section -->
     <div class="header">
-        <h1>Order Confirmation - {{ order.order_id }}</h1>
+        <h3>Order Confirmation - Order Number: {{ order.order_id }}  Confirmed</h3>
+        <h4>Megametal & Machinery</h4>
     </div>
-
     <!-- Order Summary Section -->
     <div class="order-summary">
-        <h2>Order Summary:</h2>
-        <pre>{{ formatted_product_details }}</pre>
+        <h2>Product Details:</h2>
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            {% for product in formatted_product_details %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Shipping fee: ${{ order.shipping_fee }}</h3>
+        <h3>Total Price: ${{ order.total_price }}</h3>
     </div>
 
     <!-- Delivery Date Section -->
     <div class="delivery-date">
-        <h2>Delivery Date Range:</h2>
+        <h2>Delivery Date :</h2>
         <p>{{ formatted_delivery_date }}</p>
     </div>
 
-        <div class="view-order-button">
+    <div class="view-order-button">
         <a href="https://megametalmachinery.com/Accounts/orders/{{ order.order_id }}/" class="button">View Order</a>
     </div>
+
     <!-- Footer Section -->
     <div class="footer">
         <p>Thank you for your order!</p>
-        <p>If you have any questions, feel free to <a href="mailto:info@megametalmachinery.com">contact us</a>.</p>
+        <p>If you have any questions, feel free to <a href="mailto:megametalmachinery@gmail.com">contact us</a>.</p>
     </div>
 
 </body>

@@ -47,7 +47,10 @@
                      </div>
                       <div class="form-group">
                         <label>Password</label>
-                        {{ login_form.password }}
+                          {{ login_form.password }}
+                          <span class="input-group-text bg-transparent" id="togglePasswordLogin" style="cursor: pointer;">
+                              <i id="eyeIconLogin" class="bi bi-eye"></i>
+                          </span>
                         {% if login_form.password.errors %}
                           <div class="text-danger">{{ login_form.password.errors }}</div>
                         {% endif %}
@@ -62,7 +65,7 @@
                             </span>
                           </span><label class="form-check-label" for="login-remember">Remember Me</label>
                         </div>
-                        <span><a style="text-decoration: none; color: black;" href="#">Forgot password</a></span>
+                        <span><a style="text-decoration: none; color: black;" href="{% url 'forgot_password' %}">Forgot password</a></span>
                       </div><button type="submit" class="btn btn-primary mt-4">Login</button>
                     </form>
                   </div>
@@ -89,7 +92,12 @@
                       </div>
                       <div class="form-group">
                         <label>Password</label>
-                        {{ register_form.password }}
+                      
+                          {{ register_form.password }}
+                          <span class="input-group-text bg-transparent" id="togglePasswordRegister" style="cursor: pointer;">
+                              <i id="eyeIconRegister" class="bi bi-eye"></i>
+                          </span>
+                
                         {% if register_form.password.errors %}
                         <div class="text-danger">{{ register_form.email.errors }}</div>
                         {% endif %}
@@ -180,27 +188,7 @@
           });
       }
     
-      // Password toggle visibility
-      const togglePasswordButton = document.getElementById('eyeIcon');
-      const passwordInput = document.querySelector('[name="password"]');
-      const eyeIcon = document.getElementById('eyeIcon');
     
-      if (togglePasswordButton && passwordInput) {
-        togglePasswordButton.addEventListener('click', function () {
-          // Toggle the password input type
-          const type = passwordInput.type === 'password' ? 'text' : 'password';
-          passwordInput.type = type;
-    
-          // Update the icon class
-          if (type === 'password') {
-            eyeIcon.classList.remove('bi-eye');
-            eyeIcon.classList.add('bi-eye-slash');
-          } else {
-            eyeIcon.classList.remove('bi-eye-slash');
-            eyeIcon.classList.add('bi-eye');
-          }
-        });
-      }
     </script>
 
 
@@ -252,5 +240,48 @@
       }
     </script>
     
+
+    <script>
+      // Password toggle visibility for login
+const togglePasswordLogin = document.getElementById('togglePasswordLogin');
+const passwordInputLogin = document.querySelector('[name="password"]');
+const eyeIconLogin = document.getElementById('eyeIconLogin');
+
+if (togglePasswordLogin && passwordInputLogin) {
+    togglePasswordLogin.addEventListener('click', function () {
+        const type = passwordInputLogin.type === 'password' ? 'text' : 'password';
+        passwordInputLogin.type = type;
+
+        if (type === 'password') {
+            eyeIconLogin.classList.remove('bi-eye-slash');
+            eyeIconLogin.classList.add('bi-eye');
+        } else {
+            eyeIconLogin.classList.remove('bi-eye');
+            eyeIconLogin.classList.add('bi-eye-slash');
+        }
+    });
+}
+
+// Password toggle visibility for registration
+const togglePasswordRegister = document.getElementById('togglePasswordRegister');
+const passwordInputRegister = document.querySelector('[name="password2"]'); // Assuming this is the name for the registration password
+const eyeIconRegister = document.getElementById('eyeIconRegister');
+
+if (togglePasswordRegister && passwordInputRegister) {
+    togglePasswordRegister.addEventListener('click', function () {
+        const type = passwordInputRegister.type === 'password' ? 'text' : 'password';
+        passwordInputRegister.type = type;
+
+        if (type === 'password') {
+            eyeIconRegister.classList.remove('bi-eye-slash');
+            eyeIconRegister.classList.add('bi-eye');
+        } else {
+            eyeIconRegister.classList.remove('bi-eye');
+            eyeIconRegister.classList.add('bi-eye-slash');
+        }
+    });
+}
+    </script>
+
 
     {% endblock %}

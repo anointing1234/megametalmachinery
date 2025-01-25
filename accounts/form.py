@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import Account,PartnerRegistration
+from accounts.models import Account,PartnerRegistration,WrittenReview
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
 import re
+from django.contrib.auth import get_user_model
 
 
 class RegisterForm(forms.ModelForm):
@@ -160,4 +161,120 @@ class PartnerRegistrationForm(forms.ModelForm):
             }),
         }
 
+
+
+
+
+class SendresetcodeForm(forms.Form):
+    email = forms.EmailField(
+        max_length=100,
+        help_text='Required. Enter your email address to receive a password reset code.'
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Set Bootstrap classes and placeholders
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control form-control-bg',
+            'style': 'border: 1px solid black;',
+            'placeholder': 'Enter your email'
+        })
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        User = get_user_model()  # Get the custom user model
+        if not User.objects.filter(email=email).exists():
+            raise ValidationError('No user is associated with this email address.')
+        return email
     
+
+
+
+class PasswordResetForm(forms.Form):
+    email = forms.EmailField(
+        label="Email Address",
+        help_text="Required. Enter your email address."
+    )
+    reset_code = forms.CharField(
+        label="Reset Code",
+        help_text="Required. Enter the reset code you received."
+    )
+    new_password = forms.CharField(
+        label="New Password",
+        widget=forms.PasswordInput(),
+        min_length=8,
+        help_text="Required. Minimum length is 8 characters."
+    )
+    confirm_password = forms.CharField(
+        label="Confirm Password",
+        widget=forms.PasswordInput(),
+        help_text="Required. Please confirm your new password."
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Set Bootstrap classes and placeholders
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control form-control-bg',
+            'style': 'border: 1px solid black;',
+            'placeholder': 'Enter your email'
+        })
+        self.fields['reset_code'].widget.attrs.update({
+            'class': 'form-control form-control-bg',
+            'style': 'border: 1px solid black;',
+            'placeholder': 'Enter your reset code'
+        })
+        self.fields['new_password'].widget.attrs.update({
+            'class': 'form-control form-control-bg',
+            'style': 'border: 1px solid black;',
+            'placeholder': 'Enter your new password'
+        })
+        self.fields['confirm_password'].widget.attrs.update({
+            'class': 'form-control form-control-bg',
+            'style': 'border: 1px solid black;',
+            'placeholder': 'Confirm your new password'
+        })
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password = cleaned_data.get("new_password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        if new_password and confirm_password and new_password != confirm_password:
+            raise ValidationError("The two password fields must match.")
+
+        return cleaned_data
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = WrittenReview
+        fields = ['name', 'stars', 'content', 'image']  # Include fields you want to allow users to fill
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',  # Add Bootstrap class for styling
+                'placeholder': 'Enter your name',
+                'required': 'required'  # Make the field required
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',  # Add Bootstrap class for styling
+                'rows': 4,
+                'placeholder': 'Write your review here...',
+                'required': 'required'  # Make the field required
+            }),
+            'image': forms.ClearableFileInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Upload image',  # Add Bootstrap class for styling
+                'accept': 'image/*'  # Allow only image files
+            }),
+        }
+
+    # Custom method to render stars as radio buttons
+    def stars_widget(self):
+        stars_html = ''
+        for i in range(1, 6):  # 1 to 5 stars
+            stars_html += f'''
+                <input type="radio" id="star-{i}" name="stars" value="{i}" required>
+                <label for="star-{i}" class="star">&#9733;</label>  <!-- Unicode star character -->
+            '''
+        return stars_html

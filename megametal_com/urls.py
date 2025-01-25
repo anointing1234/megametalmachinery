@@ -10,6 +10,8 @@ urlpatterns = [
     path('home/', views.home_view, name='home'),
     path('product_detail/',views.product_detail,name='product_detail'),
     path('checkout_view/',views.checkout_view,name='checkout_view'),
+    path('about_us/',views.about_us_view,name='about_us'),
+    
     
     path('Excavators/',views.Excavators_view,name='Excavators'),
     path('Bulldozers/',views.Bulldozers_view,name='Bulldozers'),
@@ -41,6 +43,7 @@ urlpatterns = [
     path('Dumptrucks/',views.Dumptrucks_view,name='Dumptrucks'),
     path('Forklifts/',views.Forklifts_view,name='Forklifts'),
     path('Trailers/',views.Trailers_view,name='Trailers'),
+    
     
    
                                                           

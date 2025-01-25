@@ -161,7 +161,7 @@
                                     <use xlink:href="{% static 'images/sprite.svg'%} #arrow-rounded-down-9x6">
                                     </use>
                                 </svg></span></a>
-                                {% if user.is_authenticated %}
+                        {% if user.is_authenticated %}
                         <div class="nav-links__menu"><!-- .menu -->
                             <ul class="menu menu--layout--classic">
                                 <li><a href="{% url 'cart_view' %}">Cart</a></li>
@@ -173,7 +173,7 @@
                         {% endif %}
                     </li>
                     <li class="nav-links__item nav-links__item--with-submenu"><a
-                            href="#"><span>About Us</span></a>
+                            href="{% url 'about_us' %}"><span>About Us</span></a>
                     </li>
                     <li class="nav-links__item"><a href="contact-us.html"><span>Contact
                                 Us</span></a></li>
@@ -189,22 +189,14 @@
                                         <span>Login</span>
                                     </a>
                                 </li>
-                                {% endif %}
+                {% endif %}
                 </ul>
             </div><!-- .nav-links / end -->
 
             
           <!-- .nav-links / end -->
-          <div class="nav-panel__indicators">
-            <div class="indicator">
-              <a href="wishlist.html" class="indicator__button">
-                <span class="indicator__area">
-                  <svg width="20px" height="20px">
-                    <use xlink:href="{% static 'images/sprite.svg'%}#heart-20"></use>
-                  </svg> <span class="indicator__value">0</span>
-                </span>
-              </a>
-            </div>
+          <div class="nav-panel__indicators"> 
+            {% if user.is_authenticated %}
             <div class="indicator ">
               <a href="{% url 'cart_view' %}" class="indicator__button">
                 <span class="indicator__area">
@@ -213,8 +205,10 @@
                     </svg>
                     <span class="indicator__value" id="cart-count">0</span>
                 </span>
-            </a>
+             </a>
           </div>
+          {% endif %}
+
         </div>
       </div>
     </div>

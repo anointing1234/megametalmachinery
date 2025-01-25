@@ -26,6 +26,10 @@ urlpatterns = [
     path('register_partner/',views.register_partners,name='register_partner'),
     path('logout_view/',views.logout_view,name='logout_view'),
     path('products/',views.products_view,name='products'),
+    path('forgot_password',views.forgot_password,name='forgot_password'),
+    path('send-reset-code/',views.send_reset_code_view, name='sendmail_view'),
+    path('reset-password/',views.ResetPasswordView, name='reset_password_page'),
+    path('reset_password/',views.reset_password_view, name='reset_password'),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

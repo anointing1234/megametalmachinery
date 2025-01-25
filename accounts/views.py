@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from django.urls import reverse
-from .form import RegisterForm,LoginForm,PartnerRegistrationForm
+from .form import RegisterForm,LoginForm,PartnerRegistrationForm,SendresetcodeForm,PasswordResetForm,ReviewForm 
 from django.http import JsonResponse
 import requests 
 from decimal import Decimal, InvalidOperation
@@ -30,8 +30,10 @@ import logging
 from django.db import transaction
 from django.db.models import F,Sum
 from django.contrib.auth.decorators import login_required
-from .models import Product,ShoppingCart,BankDetails,Order,PartnerRegistration
+from .models import Product,ShoppingCart,BankDetails,Order,PartnerRegistration,PasswordResetCode,WrittenReview 
 import logging
+from django.core.mail import send_mail
+
 
 logger = logging.getLogger(__name__)
 
@@ -88,13 +90,14 @@ def login_view(request):
         login_form = LoginForm()
     return render(request, 'forms/Auth.html', {'login_form': login_form})
 
+
 def logout_view(request):
+    auth_logout(request)
     register_form = RegisterForm()
     login_form = LoginForm()
-    return render(request,'forms/Auth.html',
-    { 
-    'login_form': login_form,
-    'register_form': register_form,                                       
+    return render(request, 'forms/Auth.html', {
+        'login_form': login_form,
+        'register_form': register_form,
     })
 
 def cart_view(request):
@@ -131,10 +134,39 @@ def cart_view(request):
 
 
 
-def product_description(request,product_id):
+def product_description(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'home/product_detail.html', {'product': product})
+    related_products = Product.objects.filter(product_category=product.product_category).exclude(id=product.id)[:5]
+    reviews = WrittenReview.objects.filter(product=product)
 
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)  # Include FILES for image upload
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product  # Associate the review with the product
+            review.save()
+
+            # Update the product's star rating
+            update_product_rating(product)
+
+            return redirect('product_detail', product_id=product.id)  # Redirect to the same product page
+    else:
+        form = ReviewForm()
+
+    return render(request, 'home/product_detail.html', {
+        'product': product,
+        'related_products': related_products,
+        'reviews': reviews,
+        'form': form,  # Pass the form to the template
+    })
+
+def update_product_rating(product):
+    reviews = WrittenReview.objects.filter(product=product)
+    if reviews.exists():
+        average_rating = sum(review.stars for review in reviews) / reviews.count()
+        product.reviews_in_stars = round(average_rating, 1)  # Update the product's star rating
+        product.save()
+        
 
 
 @login_required
@@ -253,6 +285,7 @@ def get_bank_details(request):
         return JsonResponse({"error": str(e)}, status=500)  
     
 
+
 def create_order(request):
     if request.method == "POST":
         try:
@@ -266,48 +299,56 @@ def create_order(request):
             if not billing_details or not cart_details:
                 return JsonResponse({"success": False, "error": "Invalid request data."}, status=400)
 
-            # Calculate total price
-            total_price = sum(
-                float(product["quantity"]) * float(product["price"])
-                for product in cart_details["products"]
-            )
+            # Create a list to hold order IDs for the response
+            order_ids = []
 
-            # Create a new order instance
-            order = Order(
-                user=request.user,
-                street_address=billing_details["street_address"],
-                city=billing_details["city"],
-                state=billing_details["state"],
-                postcode=billing_details["postcode"],
-                email=billing_details["email"],
-                phone=billing_details["phone"],
-                product_details=json.dumps(cart_details),
-                total_price=total_price,
-                shipping_fee=cart_details.get("shipping_fee", 0.0),
-            )
+            # Iterate over each product in the cart
+            for product in cart_details["products"]:
+                # Calculate total price for the individual product order
+                total_price = float(product["quantity"]) * float(product["price"])
 
-            # Assign an image to the order from the first product in cart_details
-            first_product = cart_details["products"][0] if cart_details["products"] else None
-            if first_product:
-                product_id = first_product["id"]
+                # Calculate shipping fee (this is a placeholder; adjust as needed)
+                shipping_fee = cart_details.get("shipping_fee", 0.0)  # Ensure this is set correctly
+
+                # Create a new order instance for each product
+                order = Order(
+                    user=request.user,
+                    street_address=billing_details["street_address"],
+                    city=billing_details["city"],
+                    state=billing_details["state"],
+                    postcode=billing_details["postcode"],
+                    email=billing_details["email"],
+                    phone=billing_details["phone"],
+                    product_details=json.dumps({"products": [product]}),  # Store only the current product
+                    total_price=total_price,
+                    shipping_fee=shipping_fee,
+                )
+
+                # Assign an image to the order from the product
+                product_id = product["id"]
                 try:
-                    product = Product.objects.get(id=product_id)
-                    if product.image:
-                        order.order_image = product.image  # Assign product's image to order_image
+                    product_instance = Product.objects.get(id=product_id)
+                    if product_instance.image:
+                        order.order_image = product_instance.image  # Assign product's image to order_image
                 except Product.DoesNotExist:
-                    pass
+                    pass  # Handle the case where the product does not exist
 
-            # Save the order instance
-            order.save()
+                # Save the order instance
+                order.save()
+                order_ids.append(order.id)  # Store the order ID for the response
 
             # Clear the shopping cart for the user
             ShoppingCart.objects.filter(user=request.user).delete()
 
-            return JsonResponse({"success": True, "order_id": order.id})
+            return JsonResponse({"success": True, "order_ids": order_ids})
 
+        except json.JSONDecodeError:
+            return JsonResponse({"success": False, "error": "Invalid JSON format."}, status=400)
         except Exception as e:
             return JsonResponse({"success": False, "error": str(e)}, status=500)
+
     return JsonResponse({"success": False, "error": "Invalid request method."}, status=405)
+
 
 
 def order_success(request):
@@ -356,20 +397,57 @@ def register_partners(request):
             partner.registration_date = timezone.now()  # Set registration date
             partner.save()
 
-            # Prepare the email content
+            # Prepare the email content with HTML formatting
             subject = "New Partner Registration"
             message = f"""
-            A new partner has registered with the following details:
-
-            Company Name: {partner.company_name}
-            Contact Person: {partner.contact_person}
-            Email: {partner.email}
-            Phone Number: {partner.phone_number}
-            Company Type: {partner.company_type}
-            Address: {partner.address}
-            Services/Products Provided: {partner.services_provided}
-            Website: {partner.website or 'Not Provided'}
-            Registration Date: {partner.registration_date.strftime('%Y-%m-%d %H:%M:%S')}
+            <html>
+                <body>
+                    <h2>New Partner Registration</h2>
+                    <p>A new partner has registered with the following details:</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <th style="text-align: left; border: 1px solid #dddddd; padding: 8px;">Field</th>
+                            <th style="text-align: left; border: 1px solid #dddddd; padding: 8px;">Details</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Company Name</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.company_name}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Contact Person</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.contact_person}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Email</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.email}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Phone Number</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.phone_number}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Company Type</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.company_type}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Address</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.address}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Services/Products Provided</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.services_provided}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Website</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.website or 'Not Provided'}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">Registration Date</td>
+                            <td style="border: 1px solid #dddddd; padding: 8px;">{partner.registration_date.strftime('%Y-%m-%d %H:%M:%S')}</td>
+                        </tr>
+                    </table>
+                </body>
+            </html>
             """
 
             # Send the email
@@ -380,7 +458,7 @@ def register_partners(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [company_email]
             )
-            email.content_subtype = "plain"  # Explicitly set content type to plain text
+            email.content_subtype = "html"  # Set content type to HTML
             email.charset = 'utf-8'  # Ensure UTF-8 encoding
             email.send(fail_silently=False)
 
@@ -394,6 +472,7 @@ def register_partners(request):
     return render(request, 'forms/register_partner.html', {'form': form})
 
 
+
 def products_view(request):
     return render(request,'home/products.html')
 
@@ -403,3 +482,87 @@ def custom_404_view(request, exception):
 
 def custom_500_view(request):
     return render(request, 'home/500.html', status=500)
+
+def forgot_password(request):
+    sendmailreset = SendresetcodeForm()
+    return render(request,'forms/send_password.html',{'sendmailreset': sendmailreset})
+
+def send_reset_code_view(request):
+    if request.method == 'POST':
+        form = SendresetcodeForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            
+            # Check if the email is registered
+            User = get_user_model()  # Get the custom user model
+            if not User.objects.filter(email=email).exists():
+                return JsonResponse({'success': False, 'message': 'This email address is not registered.'})
+
+            # Generate a reset code
+            reset_code = get_random_string(length=7)  # Generate a random string as the reset code
+            
+            # Store the reset code in the database
+            PasswordResetCode.objects.update_or_create(
+                email=email,
+                defaults={'reset_code': reset_code}
+            )
+            
+            # Send the email
+            send_mail(
+                'Password Reset Code',
+                f'Your password reset code is: {reset_code}',
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False,
+            )
+            
+            return JsonResponse({'success': True, 'message': 'A password reset code has been sent to your email.'})
+        else:
+            return JsonResponse({'success': False, 'message': form.errors['email'][0]})
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'})
+
+
+
+def ResetPasswordView(request):
+    return render(request,'forms/reset_password.html')   
+
+
+
+
+
+
+
+def reset_password_view(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)  # Use a different variable name
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            reset_code = form.cleaned_data['reset_code']
+            new_password = form.cleaned_data['new_password']
+
+            # Check if the reset code is valid for the given email
+            try:
+                reset_entry = PasswordResetCode.objects.get(email=email, reset_code=reset_code)
+            except PasswordResetCode.DoesNotExist:
+                return JsonResponse({'success': False, 'message': 'Invalid reset code or email.'})
+
+            # Update the user's password
+            User = get_user_model()
+            try:
+                user = User.objects.get(email=email)
+                user.set_password(new_password)  # Set the new password
+                user.save()
+
+                # Optionally, delete the reset code after use
+                reset_entry.delete()
+
+                messages.success(request, "Your password has been reset successfully.")
+                return JsonResponse({'success': True, 'message': 'Your password has been reset successfully.'})
+            except User.DoesNotExist:
+                return JsonResponse({'success': False, 'message': 'User  not found.'})
+
+    else:
+        form = PasswordResetForm()  # This is now correctly instantiated
+
+    return render(request, 'reset_password.html', {'form': form})

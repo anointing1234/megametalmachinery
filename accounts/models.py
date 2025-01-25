@@ -18,6 +18,8 @@ from django.contrib.auth import get_user_model
 import uuid
 from django.conf import settings
 import json
+import uuid
+from django.contrib.auth.models import User 
 
 import locale
 
@@ -241,9 +243,6 @@ class BankDetails(models.Model):
     def __str__(self):
         return f"{self.bank_name} - {self.branch_name}"   
     
- 
-
-
 
 class Order(models.Model):
     ORDER_STATUSES = [
@@ -252,8 +251,8 @@ class Order(models.Model):
         ('cancelled', 'Cancelled'),
     ]
 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)  # Reference the custom user model
-    order_id = models.CharField(max_length=20, unique=True, editable=False, blank=True)  # Auto-generated order ID
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    order_id = models.CharField(max_length=20, unique=True, editable=False, blank=True)
     street_address = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -263,19 +262,18 @@ class Order(models.Model):
     status = models.CharField(max_length=20, choices=ORDER_STATUSES, default='under_review')
     product_details = models.TextField()  # JSON field to store product details
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    shipping_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Added shipping fee
-    order_image = models.ImageField(upload_to='order_images/', null=True, blank=True, help_text="Upload an image for the order")
+    shipping_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    order_image = models.ImageField(upload_to='order_images/', null=True, blank=True)
     bank_details = models.ForeignKey('BankDetails', null=True, blank=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    delivery_date_start = models.DateField(null=True, blank=True)  # Start of delivery range
-    delivery_date_end = models.DateField(null=True, blank=True)    # End of delivery range
+    delivery_date_start = models.DateField(null=True, blank=True)
+    delivery_date_end = models.DateField(null=True, blank=True)
 
     def calculate_total_price(self):
         """Calculate total price (sum of products and shipping fee)."""
-        import json
         products = json.loads(self.product_details).get("products", [])
-        products_total = sum(item["quantity"] * item["price"] for item in products)
+        products_total = sum(int(item["quantity"]) * float(item["price"]) for item in products)
         return products_total + self.shipping_fee
 
     def image_tag(self):
@@ -287,71 +285,61 @@ class Order(models.Model):
     image_tag.short_description = 'Image Preview'
 
     def save(self, *args, **kwargs):
-        # Generate a unique order ID if it does not exist
         if not self.order_id:
-            self.order_id = str(uuid.uuid4())[:8].upper()  # Generate a short unique ID (8 characters)
-        # Set delivery date range if not already set
+            self.order_id = str(uuid.uuid4())[:8].upper()
         if not self.delivery_date_start or not self.delivery_date_end:
             today = datetime.now().date()
-            self.delivery_date_start = today + timedelta(days=14)  # 2 weeks from today
-            self.delivery_date_end = self.delivery_date_start + timedelta(days=7)  # Delivery range of 1 week
+            self.delivery_date_start = today + timedelta(days=14)
+            self.delivery_date_end = self.delivery_date_start + timedelta(days=7)
         super().save(*args, **kwargs)
 
     def formatted_delivery_date(self):
         """Generate a delivery date range and return it as a formatted string."""
         if self.created_at:
-            from datetime import timedelta
-            start_date = self.created_at + timedelta(days=14)  # Two weeks from creation date
-            end_date = start_date + timedelta(days=7)  # A 7-day range
+            start_date = self.created_at + timedelta(days=14)
+            end_date = start_date + timedelta(days=7)
             return f"Between {start_date.strftime('%d %B')} and {end_date.strftime('%d %B')}"
         return "Delivery date unavailable"
 
+    @staticmethod
+    def format_price(price):
+        """Format the price as a string with commas and two decimal places."""
+        try:
+            return "${:,.2f}".format(float(price))
+        except (ValueError, TypeError):
+            return "N/A"
 
     def format_product_details(self):
-        """Format the product details into a readable string."""
+        """Format the product details into a list of dictionaries for easy rendering."""
         try:
-            # Load the product details from JSON
             product_details = json.loads(self.product_details)
-
-            # Initialize a list to store formatted details
             formatted_details = []
-      
-            # Check if the 'products' key exists and contains products
+        
             if 'products' in product_details and isinstance(product_details['products'], list):
                 for item in product_details['products']:
-                    # Safely extract product details
                     name = item.get('name', 'N/A')
                     quantity = item.get('quantity', 'N/A')
                     price = item.get('price', 'N/A')
-                    image_url = item.get('image', 'N/A')
 
-                                    # Format the price with commas and two decimal places
-                    formatted_price = locale.currency(float(price), grouping=True) if price != 'N/A' else 'N/A'
+                    # Format the price using the static method
+                    formatted_price = self.format_price(price)
 
-                    # Format the details in a user-friendly way
-                    formatted_details.append(f"Product: {name}\n"
-                                             f"Quantity: {quantity}\n"
-                                             f"Price: {formatted_price}\n"
-                                            )
+                    formatted_details.append({
+                        'name': name,
+                        'quantity': quantity,
+                        'price': formatted_price,
+                    })
 
-            # Return the formatted details as a string, each product separated by two line breaks
-            return "\n\n".join(formatted_details) if formatted_details else "No products found."
+            return formatted_details if formatted_details else []
 
         except json.JSONDecodeError:
-            # Handle JSON parsing error
             print("Error: Invalid JSON format in product_details.")
-            return "Invalid product details format."
+            return []
 
         except Exception as e:
-            # Handle any other exceptions
             print(f"Error formatting product details: {e}")
-            return "Unable to format product details"
+            return [] 
 
-
-    def __str__(self):
-        return f"Order {self.order_id} - {self.email}"
-    
-    
 
 class PartnerRegistration(models.Model):
     USER_TYPES = [
@@ -372,4 +360,17 @@ class PartnerRegistration(models.Model):
     registration_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.company_name} - {self.contact_person}"    
+        return f"{self.company_name} - {self.contact_person}"   
+
+
+
+class PasswordResetCode(models.Model):
+    email = models.EmailField(unique=True)
+    reset_code = models.CharField(max_length=32)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email         
+
+
+

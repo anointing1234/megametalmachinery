@@ -130,7 +130,7 @@
                             </label>
                             <div class="payment-methods__item-container">
                               <div class="payment-methods__item-description text-muted">
-                                Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                                Make your payment directly into our bank account.Your order will not be shipped until the funds have cleared in our account.
                               </div>
                             </div>
                           </li>
@@ -145,7 +145,7 @@
                             </span>
                           </span>
                           <label class="form-check-label" for="checkout-terms">
-                            I have read and agree to the website <a target="_blank" href="terms-and-conditions.html">terms and conditions</a>*
+                            I have read and agree to the website <a target="_blank" href="#">terms and conditions</a>*
                           </label>
                         </div>
                       </div>
@@ -269,18 +269,19 @@
         };
 
         const cartDetails = {
-            products: [
-                {% for item in cart_items %}
-                {
-                    id: "{{ item.product.id }}",
-                    name: "{{ item.product.name }}",
-                    quantity: "{{ item.quantity }}",
-                    price: "{{ item.product.price }}",
-                    image: "{{ item.product.image.url }}",
-                },
-                {% endfor %}
-            ],
-        };
+          products: [
+              {% for item in cart_items %}
+              {
+                  id: "{{ item.product.id }}",
+                  name: "{{ item.product.name }}",
+                  quantity: "{{ item.quantity }}",
+                  price: "{{ item.product.price }}",
+                  image: "{{ item.product.image.url }}",
+              },
+              {% endfor %}
+          ],
+          shipping_fee: "{{ shipping_fee }}",  // Ensure shipping fee is included
+      };
 
         // Total price calculation
         const totalAmountToPay = {{ total_with_shipping|floatformat:2|default:0 }};

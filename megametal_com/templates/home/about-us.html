@@ -1,0 +1,110 @@
+
+{% extends 'core/base/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block contents %}
+
+
+
+
+
+      <!-- desktop site__header / end --><!-- site__body -->
+      <div class="site__body">
+        <div class="block about-us">
+          <div class="about-us__image"></div>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-xl-10">
+                <div class="about-us__body">
+                  <h1 class="about-us__title">About Us</h1>
+                  <div class="about-us__text typography">
+                    <p>
+                        Welcome to Megametal and Machinery, where innovation meets excellence in the machinery industry. With over a decade of experience, we specialize in providing high-quality machinery solutions that empower businesses to achieve their goals. Our commitment to quality and customer satisfaction sets us apart as a leader in the field.
+                    </p>
+                    <p>
+                        At Megametal, we believe in the power of technology to transform industries. Our team of experts is dedicated to designing and manufacturing cutting-edge machinery that enhances productivity and efficiency. We pride ourselves on our ability to understand the unique needs of our clients and deliver tailored solutions that drive success.
+                    </p>
+                    <p>
+                        Our core values of integrity, innovation, and sustainability guide everything we do. We are committed to ethical practices and strive to minimize our environmental impact through sustainable manufacturing processes. By choosing Megametal, you are partnering with a company that values quality, reliability, and a greener future.
+                    </p>
+                    <p>
+                        Join us on our journey to revolutionize the machinery industry. Whether you are looking for advanced machinery solutions or expert consultation, Megametal and Machinery is here to support you every step of the way. Together, we can build a brighter, more efficient future.
+                    </p>
+                  </div>
+                  <div class="about-us__team">
+                    <h2 class="about-us__team-title">Meat Our Team</h2>
+                    <div class="about-us__team-subtitle text-muted">
+                      Want to work in our friendly team?<br /><a href="mailto:megametalmachinery@gmail.com">Contact us</a>
+                      and we will consider your candidacy.
+                    </div>
+                    <div class="about-us__teammates teammates">
+                      <div class="owl-carousel">
+                        <div class="teammates__item teammate">
+                          <div class="teammate__avatar">
+                            <img src="images/teammates/teammate-1.jpg" alt="" />
+                          </div>
+                          <div class="teammate__name">Michael Russo</div>
+                          <div class="teammate__position text-muted">
+                            Chief Executive Officer
+                          </div>
+                        </div>
+                        <div class="teammates__item teammate">
+                          <div class="teammate__avatar">
+                            <img src="images/teammates/teammate-2.jpg" alt="" />
+                          </div>
+                          <div class="teammate__name">Katherine Miller</div>
+                          <div class="teammate__position text-muted">
+                            Marketing Officer
+                          </div>
+                        </div>
+                        <div class="teammates__item teammate">
+                          <div class="teammate__avatar">
+                            <img src="images/teammates/teammate-3.jpg" alt="" />
+                          </div>
+                          <div class="teammate__name">Anthony Harris</div>
+                          <div class="teammate__position text-muted">
+                            Finance Director
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+       <!-- site__body / end -->
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+       <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             // Function to fetch the cart count
+             function updateCartCount() {
+                 fetch("{% url 'get_cart_count' %}")  // Replace 'get_cart_count' with your actual URL name
+                     .then(response => response.json())
+                     .then(data => {
+                         const cartCountElement = document.getElementById("cart-count");
+                         if (cartCountElement) {
+                             cartCountElement.textContent = data.cart_count; // Update the cart count
+                         }
+                     })
+                     .catch(error => console.error("Error fetching cart count:", error));
+             }
+     
+             // Call updateCartCount on page load
+             updateCartCount();
+     
+             // Optionally, re-fetch cart count at intervals or trigger it on specific actions
+         });
+     </script>
+ 
+       
+     {% endblock %}

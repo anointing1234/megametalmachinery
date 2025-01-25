@@ -261,6 +261,10 @@ def Trailers_view(request):
         'Trailer_count': Trailer_count,
     }) 
 
+
+def about_us_view(request):
+    return render(request,'home/about-us.html',)     
+
   
     
 

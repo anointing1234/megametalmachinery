@@ -97,53 +97,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="widget-filters__item">
-                        <div class="filter filter--opened" data-collapse-item>
-                          <button
-                            type="button"
-                            class="filter__title"
-                            data-collapse-trigger
-                          >
-                            Price
-                            <svg
-                              class="filter__arrow"
-                              width="12px"
-                              height="7px"
-                            >
-                              <use
-                                xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-down-12x7"
-                              ></use>
-                            </svg>
-                          </button>
-                          <div class="filter__body" data-collapse-content>
-                            <div class="filter__container">
-                              <div
-                                class="filter-price"
-                                data-min="500"
-                                data-max="1500"
-                                data-from="590"
-                                data-to="1130"
-                              >
-                                <div class="filter-price__slider"></div>
-                                <div class="filter-price__title">
-                                  Price: $<span
-                                    class="filter-price__min-value"
-                                  ></span>
-                                  – $<span
-                                    class="filter-price__max-value"
-                                  ></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-
-
+                    
 
 
 
@@ -303,16 +257,19 @@
                             <div class="product-card__rating">
                                 <div class="rating">
                                     <div class="rating__body">
-                                        {% for i in "12345" %}
-                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                <g class="rating__fill">
-                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                </g>
-                                                <g class="rating__stroke">
-                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                </g>
-                                            </svg>
-                                        {% endfor %}
+                                      {% for i in "12345" %}
+                                      {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                          <!-- Filled star -->
+                                          <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                              <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
+                                          </svg>
+                                      {% else %}
+                                          <!-- Unfilled star -->
+                                          <svg class="rating__star" width="13px" height="12px">
+                                              <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                          </svg>
+                                      {% endif %}
+                                  {% endfor %}
                                     </div>
                                 </div>
                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -378,53 +335,72 @@
 
 
 
-                  <div class="products-view__pagination">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a
-                          class="page-link page-link--with-arrow"
-                          href="#"
-                          aria-label="Previous"
-                          ><svg
-                            class="page-link__arrow page-link__arrow--left"
-                            aria-hidden="true"
-                            width="8px"
-                            height="13px"
-                          >
-                            <use
-                              xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-left-8x13"
-                            ></use></svg
-                        ></a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#"
-                          >2 <span class="sr-only">(current)</span></a
-                        >
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a
-                          class="page-link page-link--with-arrow"
-                          href="#"
-                          aria-label="Next"
-                          ><svg
-                            class="page-link__arrow page-link__arrow--right"
-                            aria-hidden="true"
-                            width="8px"
-                            height="13px"
-                          >
-                            <use
-                              xlink:href="{% static 'images/sprite.svg'%}#arrow-rounded-right-8x13"
-                            ></use></svg
-                        ></a>
-                      </li>
-                    </ul>
-                  </div>
+
+                
+                 
+                <div class="products-view__pagination">
+                  <ul class="pagination justify-content-center">
+                      {% if  RockDrill_products.has_previous %}
+                          <li class="page-item">
+                              <a class="page-link page-link--with-arrow" href="?page={{  RockDrill_products.previous_page_number }}" aria-label="Previous">
+                                  <svg class="page-link__arrow page-link__arrow--left" aria-hidden="true" width="8px" height="13px">
+                                      <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-8x13"></use>
+                                  </svg>
+                              </a>
+                          </li>
+                      {% else %}
+                          <li class="page-item disabled">
+                              <a class="page-link page-link--with-arrow" href="#" aria-label="Previous">
+                                  <svg class="page-link__arrow page-link__arrow--left" aria-hidden="true" width="8px" height="13px">
+                                      <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-left-8x13"></use>
+                                  </svg>
+                              </a>
+                          </li>
+                      {% endif %}
+              
+                      {% for num in  RockDrill_products.paginator.page_range %}
+                          {% if  RockDrill_products.number == num %}
+                              <li class="page-item active">
+                                  <a class="page-link" href="#">{{ num }} <span class="sr-only">(current)</span></a>
+                              </li>
+                          {% else %}
+                              <li class="page-item">
+                                  <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+              
+                      {% if  RockDrill_products.has_next %}
+                          <li class="page-item">
+                              <a class="page-link page-link--with-arrow" href="?page={{  RockDrill_products.next_page_number }}" aria-label="Next">
+                                  <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">
+                                      <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-8x13"></use>
+                                  </svg>
+                              </a>
+                          </li>
+                      {% else %}
+                          <li class="page-item disabled">
+                              <a class="page-link page-link--with-arrow" href="#" aria-label="Next">
+                                  <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">
+                                      <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-right-8x13"></use>
+                                  </svg>
+                              </a>
+                          </li>
+                      {% endif %}
+                  </ul>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
               </div>
             </div>

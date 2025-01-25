@@ -215,10 +215,6 @@
                                 {% if user.is_authenticated %}
                                 
                                 <div class="nav-panel__indicators">
-                                    <div class="indicator"><a href="wishlist.html" class="indicator__button"><span
-                                                class="indicator__area"><svg width="20px" height="20px">
-                                                    <use xlink:href="{% static 'images/sprite.svg' %}#heart-20"></use>
-                                                </svg> <span class="indicator__value">0</span></span></a></div>
                                     <div class="indicator ">
                                         <a href="{% url 'cart_view' %}" class="indicator__button">
                                             <span class="indicator__area">
@@ -403,19 +399,23 @@
                                                 {#  {% url 'product_detail' product.id %}  #}
                                                 <a href="{% url 'product_detail' product.id %}">{{ product.name|upper }}</a>
                                             </div>
+                                         
                                             <div class="product-card__rating">
                                                 <div class="rating">
                                                     <div class="rating__body">
                                                         {% for i in "12345" %}
-                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                <g class="rating__fill">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                </g>
-                                                                <g class="rating__stroke">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                </g>
+                                                        {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                            <!-- Filled star -->
+                                                            <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                             </svg>
-                                                        {% endfor %}
+                                                        {% else %}
+                                                            <!-- Unfilled star -->
+                                                            <svg class="rating__star" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                            </svg>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -543,15 +543,18 @@
                                                 <div class="rating">
                                                     <div class="rating__body">
                                                         {% for i in "12345" %}
-                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                <g class="rating__fill">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                </g>
-                                                                <g class="rating__stroke">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                </g>
+                                                        {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                            <!-- Filled star -->
+                                                            <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                             </svg>
-                                                        {% endfor %}
+                                                        {% else %}
+                                                            <!-- Unfilled star -->
+                                                            <svg class="rating__star" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                            </svg>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -780,15 +783,18 @@
                                                 <div class="rating">
                                                     <div class="rating__body">
                                                         {% for i in "12345" %}
-                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                <g class="rating__fill">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                </g>
-                                                                <g class="rating__stroke">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                </g>
+                                                        {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                            <!-- Filled star -->
+                                                            <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                             </svg>
-                                                        {% endfor %}
+                                                        {% else %}
+                                                            <!-- Unfilled star -->
+                                                            <svg class="rating__star" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                            </svg>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -898,15 +904,18 @@
                                                 <div class="rating">
                                                     <div class="rating__body">
                                                         {% for i in "12345" %}
-                                                            <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                <g class="rating__fill">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                </g>
-                                                                <g class="rating__stroke">
-                                                                    <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                </g>
+                                                        {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                            <!-- Filled star -->
+                                                            <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                             </svg>
-                                                        {% endfor %}
+                                                        {% else %}
+                                                            <!-- Unfilled star -->
+                                                            <svg class="rating__star" width="13px" height="12px">
+                                                                <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                            </svg>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -1005,15 +1014,18 @@
                                                     <div class="rating">
                                                         <div class="rating__body">
                                                             {% for i in "12345" %}
-                                                                <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                    <g class="rating__fill">
-                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                    </g>
-                                                                    <g class="rating__stroke">
-                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                    </g>
+                                                            {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                                <!-- Filled star -->
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                                 </svg>
-                                                            {% endfor %}
+                                                            {% else %}
+                                                                <!-- Unfilled star -->
+                                                                <svg class="rating__star" width="13px" height="12px">
+                                                                    <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                                </svg>
+                                                            {% endif %}
+                                                        {% endfor %}
                                                         </div>
                                                     </div>
                                                     <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>
@@ -1103,15 +1115,18 @@
                                                     <div class="rating">
                                                         <div class="rating__body">
                                                             {% for i in "12345" %}
-                                                                <svg class="rating__star {% if i <= product.reviews_in_stars %}rating__star--active{% endif %}" width="13px" height="12px">
-                                                                    <g class="rating__fill">
-                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal"></use>
-                                                                    </g>
-                                                                    <g class="rating__stroke">
-                                                                        <use xlink:href="{% static 'images/sprite.svg' %}#star-normal-stroke"></use>
-                                                                    </g>
+                                                            {% if  product.reviews_in_stars|add:"0" >= i|add:"0" %}
+                                                                <!-- Filled star -->
+                                                                <svg class="rating__star rating__star--active" width="13px" height="12px">
+                                                                    <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#f39c12" />
                                                                 </svg>
-                                                            {% endfor %}
+                                                            {% else %}
+                                                                <!-- Unfilled star -->
+                                                                <svg class="rating__star" width="13px" height="12px">
+                                                                    <path d="M6.5 0l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z" fill="#ddd" />
+                                                                </svg>
+                                                            {% endif %}
+                                                        {% endfor %}
                                                         </div>
                                                     </div>
                                                     <div class="product-card__rating-legend">{{ product.reviews_in_stars }} Stars</div>

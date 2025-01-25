@@ -10,6 +10,7 @@ from django.contrib.auth import logout
 from bs4 import BeautifulSoup
 import random
 from accounts.models import Product,ShoppingCart
+from django.core.paginator import Paginator
 
 
 def home_view(request):
@@ -43,223 +44,6 @@ def checkout_view(request):
     }
     return render(request,'home/checkout.html',context)
 
-def Excavators_view(request):
-    # Query products with "Excavators" in their name
-    excavator_products = Product.objects.filter(name__icontains="Excavator")
-    # Render the products to a template
-    excavator_count = excavator_products.count()
-    return render(request, 'home/excavators.html',{    
-    'excavator_products': excavator_products,
-    'excavator_count': excavator_count,
-    })
-
-def Bulldozers_view(request):
-    Bulldozar_products = Product.objects.filter(name__icontains="bulldozar")
-    Bulldozar_count = Bulldozar_products.count()  # Fixed typo here
-    return render(request, 'home/Bulldozers.html', {
-        'Bulldozar_products': Bulldozar_products,
-        'Bulldozar_count': Bulldozar_count,
-    })
-
-def Cranes_view(request):
-    # Query products with "Crane" in their name
-    Crane_products = Product.objects.filter(name__icontains="Crane")
-    Crane_count = Crane_products.count()  # Fixed typo here
-    return render(request, 'home/Cranes.html', {
-        'Crane_products': Crane_products,
-        'Crane_count': Crane_count,
-    })
-
-def Loaders_view(request):
-    Loaders_products = Product.objects.filter(name__icontains="Loader")
-    Loaders_count = Loaders_products.count()  # Fixed typo here
-    return render(request, 'home/Loaders.html', {
-        'Loaders_products': Loaders_products,
-        'Loaders_count': Loaders_count,
-    })
-
-
-
-
-
-def SteelPlates_view(request):
-    Steel_products = Product.objects.filter(name__icontains="Steel Plate")
-    Steel_count = Steel_products.count()  # Fixed typo here
-    return render(request, 'home/steel.html', {
-        'Steel_products': Steel_products,
-        'Steel_count': Steel_count,
-    })
-    
-
-def AluminumSheets_view(request):
-    Aluminum_products = Product.objects.filter(name__icontains="Aluminum Sheet")
-    Aluminum_count = Aluminum_products.count()  # Fixed typo here
-    return render(request, 'home/Aluminum.html', {
-        'Aluminum_products': Aluminum_products,
-        'Aluminum_count': Aluminum_count,
-    })
-    
-
-def CopperWires_view(request):
-    Copper_products = Product.objects.filter(name__icontains="Copper")
-    Copper_count = Copper_products.count()  # Fixed typo here
-    return render(request, 'home/Copper.html', {
-        'Copper_products': Copper_products,
-        'Copper_count': Copper_count,
-    })
-    
-
-def MetalPipes_view(request):
-    Metal_products = Product.objects.filter(name__icontains="Metal pipes")
-    Metal_count = Metal_products.count()  # Fixed typo here
-    return render(request, 'home/metal.html', {
-        'Metal_products': Metal_products,
-        'Metal_count': Metal_count,
-    })
-
-
-
-def CNCMachines_view(request):
-    cnc_products = Product.objects.filter(name__icontains="CNC")
-    cnc_count =  cnc_products.count()  # Fixed typo here
-    return render(request, 'home/cnc.html', {
-        'cnc_products': cnc_products,
-        'cnc_count': cnc_count,
-    })
-   
-
-def Lathes_view(request):
-    Lathes_products = Product.objects.filter(name__icontains="Lathes")
-    Lathes_count =  Lathes_products.count()  # Fixed typo here
-    return render(request, 'home/Lathes.html', {
-        'Lathes_products': Lathes_products,
-        'Lathes_count': Lathes_count,
-    })
-
-def MillingMachines_view(request):
-    Milling_products = Product.objects.filter(name__icontains="Milling Machine")
-    Milling_count =   Milling_products.count()  # Fixed typo here
-    return render(request, 'home/Milling.html', {
-        'Milling_products': Milling_products,
-        'Milling_count': Milling_count,
-    })
-
-
-def HydraulicPresses_view(request):
-    Hydraulic_products = Product.objects.filter(name__icontains="Hydraulic Press")
-    Hydraulic_count =    Hydraulic_products.count()  # Fixed typo here
-    return render(request, 'home/Hydraulic.html', {
-        'Hydraulic_products':  Hydraulic_products,
-        'Hydraulic_count':  Hydraulic_count,
-    })    
-
-
-
-def RockDrill_view(request):
-    RockDrill_products = Product.objects.filter(name__icontains="Rock Drills")
-    RockDrill_count =   RockDrill_products.count()  # Fixed typo here
-    return render(request, 'home/RockDrill.html', {
-        'RockDrill_products':  RockDrill_products,
-        'RockDrill_count':  RockDrill_count,
-    })  
-
-
-
-def CrushingMachines_view(request):
-    CrushingMachines_products = Product.objects.filter(name__icontains="Crushing Machines")
-    CrushingMachines_count =   CrushingMachines_products.count()  # Fixed typo here
-    return render(request, 'home/CrushingMachines.html', {
-        'CrushingMachines_products':  CrushingMachines_products,
-        'CrushingMachines_count':  CrushingMachines_count,
-    }) 
-
-
-
-def MiningTrucks_view(request):
-    MiningTrucks_products = Product.objects.filter(name__icontains="Mining Trucks")
-    MiningTrucks_count =    MiningTrucks_products.count()  # Fixed typo here
-    return render(request, 'home/MiningTrucks.html', {
-        'MiningTrucks_products':  MiningTrucks_products,
-        'MiningTrucks_count':  MiningTrucks_count,
-    }) 
-
-
-
-def ConveyorBelts_view(request):
-    ConveyorBelts_products = Product.objects.filter(name__icontains="Conveyor Belt")
-    ConveyorBelts_count =    ConveyorBelts_products.count()  # Fixed typo here
-    return render(request, 'home/ConveyorBelts.html', {
-        'ConveyorBelts_products': ConveyorBelts_products,
-        'ConveyorBelts_count':  ConveyorBelts_count,
-    }) 
-
-
-
-
-def Tractors_view(request):
-    tractor_products = Product.objects.filter(name__icontains="tractor")
-    tractor_count =    tractor_products.count()  # Fixed typo here
-    return render(request, 'home/tractor.html', {
-        'tractor_products': tractor_products,
-        'tractor_count':  tractor_count,
-    }) 
-
-
-def plows_view(request):
-    plows_view_products = Product.objects.filter(name__icontains="Plow")
-    plows_view_count = plows_view_products.count()  # Fixed typo here
-    return render(request,'home/plow.html', {
-        'plows_view_products': plows_view_products,
-        'plows_view_count': plows_view_count,
-    })
-
-
-
-
-
-
-def Harvesters_view(request):
-    harvesters_products = Product.objects.filter(name__icontains="harvesters")
-    harvesters_count =    harvesters_products.count()  # Fixed typo here
-    return render(request, 'home/harvesters.html', {
-        'harvesters_products': harvesters_products,
-        'harvesters_count':  harvesters_count,
-    }) 
-
-
-def Tankers_view(request):
-    Tanker_products = Product.objects.filter(name__icontains="Tanker")
-    Tanker_count =   Tanker_products.count()  # Fixed typo here
-    return render(request, 'home/Tanker.html', {
-        'Tanker_products': Tanker_products,
-        'Tanker_count': Tanker_count,
-    }) 
-
-def Dumptrucks_view(request):
-    DumpTruck_products = Product.objects.filter(name__icontains="Dump Truck")
-    DumpTruck_count =  DumpTruck_products.count()  # Fixed typo here
-    return render(request, 'home/DumpTruck.html', {
-        'DumpTruck_products': DumpTruck_products,
-        'DumpTruck_count': DumpTruck_count,
-    }) 
-  
-    
-
-def Forklifts_view(request):
-    Forklift_products = Product.objects.filter(name__icontains="Forklift")
-    Forklift_count =  Forklift_products.count()  # Fixed typo here
-    return render(request, 'home/Forklift.html', {
-        'Forklift_products': Forklift_products,
-        'Forklift_count': Forklift_count,
-    }) 
-
-def Trailers_view(request):
-    Trailer_products = Product.objects.filter(name__icontains="Trailer")
-    Trailer_count =  Trailer_products.count()  # Fixed typo here
-    return render(request, 'home/Trailer.html', {
-        'Trailer_products': Trailer_products,
-        'Trailer_count': Trailer_count,
-    }) 
 
 
 def about_us_view(request):
@@ -268,6 +52,236 @@ def about_us_view(request):
   
     
 
+
+def Excavators_view(request):
+    excavator_products = Product.objects.filter(name__icontains="Excavator")
+    paginator = Paginator(excavator_products, 2)  # Show 2 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/excavators.html', {
+        'excavator_products': page_obj,
+        'excavator_count': excavator_products.count(),
+    })
+
+def Bulldozers_view(request):
+    bulldozer_products = Product.objects.filter(name__icontains="bulldozar")
+    paginator = Paginator(bulldozer_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Bulldozers.html', {
+        'Bulldozar_products': page_obj,
+        'Bulldozar_count': bulldozer_products.count(),
+    })
+
+def Cranes_view(request):
+    crane_products = Product.objects.filter(name__icontains="Crane")
+    paginator = Paginator(crane_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Cranes.html', {
+        'Crane_products': page_obj,
+        'Crane_count': crane_products.count(),
+    })
+
+def Loaders_view(request):
+    loaders_products = Product.objects.filter(name__icontains="Loader")
+    paginator = Paginator(loaders_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Loaders.html', {
+        'Loaders_products': page_obj,
+        'Loaders_count': loaders_products.count(),
+    })
+
+def SteelPlates_view(request):
+    steel_products = Product.objects.filter(name__icontains="Steel Plate")
+    paginator = Paginator(steel_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/steel.html', {
+        'Steel_products': page_obj,
+        'Steel_count': steel_products.count(),
+    })
+
+def AluminumSheets_view(request):
+    aluminum_products = Product.objects.filter(name__icontains="Aluminum Sheet")
+    paginator = Paginator(aluminum_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Aluminum.html', {
+        'Aluminum_products': page_obj,
+        'Aluminum_count': aluminum_products.count(),
+    })
+
+def CopperWires_view(request):
+    copper_products = Product.objects.filter(name__icontains="Copper")
+    paginator = Paginator(copper_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Copper.html', {
+        'Copper_products': page_obj,
+        'Copper_count': copper_products.count(),
+    })
+
+def MetalPipes_view(request):
+    metal_products = Product.objects.filter(name__icontains="Metal pipes")
+    paginator = Paginator(metal_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/metal.html', {
+        'Metal_products': page_obj,
+        'Metal_count': metal_products.count(),
+    })
+
+def CNCMachines_view(request):
+    cnc_products = Product.objects.filter(name__icontains="CNC")
+    paginator = Paginator(cnc_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/cnc.html', {
+        'cnc_products': page_obj,
+        'cnc_count': cnc_products.count(),
+    })
+
+def Lathes_view(request):
+    lathes_products = Product.objects.filter(name__icontains="Lathes")
+    paginator = Paginator(lathes_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Lathes.html', {
+        'Lathes_products': page_obj,
+        'Lathes_count': lathes_products.count(),
+    })
+
+def MillingMachines_view(request):
+    milling_products = Product.objects.filter(name__icontains="Milling Machine")
+    paginator = Paginator(milling_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Milling.html', {
+        'Milling_products': page_obj,
+        'Milling_count': milling_products.count(),
+    })
+
+def HydraulicPresses_view(request):
+    hydraulic_products = Product.objects.filter(name__icontains="Hydraulic Press")
+    paginator = Paginator(hydraulic_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Hydraulic.html', {
+        'Hydraulic_products': page_obj,
+        'Hydraulic_count': hydraulic_products.count(),
+    })
+
+def RockDrill_view(request):
+    rock_drill_products = Product.objects.filter(name__icontains="Rock Drills")
+    paginator = Paginator(rock_drill_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/RockDrill.html', {
+        'RockDrill_products': page_obj,
+        'RockDrill_count': rock_drill_products.count(),
+    })
+
+def CrushingMachines_view(request):
+    crushing_machines_products = Product.objects.filter(name__icontains="Crushing Machines")
+    paginator = Paginator(crushing_machines_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/CrushingMachines.html', {
+        'CrushingMachines_products': page_obj,
+        'CrushingMachines_count': crushing_machines_products.count(),
+    })
+
+def MiningTrucks_view(request):
+    mining_trucks_products = Product.objects.filter(name__icontains="Mining Trucks")
+    paginator = Paginator(mining_trucks_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/MiningTrucks.html', {
+        'MiningTrucks_products': page_obj,
+        'MiningTrucks_count': mining_trucks_products.count(),
+    })
+
+def ConveyorBelts_view(request):
+    conveyor_belts_products = Product.objects.filter(name__icontains="Conveyor Belt")
+    paginator = Paginator(conveyor_belts_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/ConveyorBelts.html', {
+        'ConveyorBelts_products': page_obj,
+        'ConveyorBelts_count': conveyor_belts_products.count(),
+    })
+
+def Tractors_view(request):
+    tractor_products = Product.objects.filter(name__icontains="tractor")
+    paginator = Paginator(tractor_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/tractor.html', {
+        'tractor_products': page_obj,
+        'tractor_count': tractor_products.count(),
+    })
+
+def plows_view(request):
+    plows_view_products = Product.objects.filter(name__icontains="Plow")
+    paginator = Paginator(plows_view_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/plow.html', {
+        'plows_view_products': page_obj,
+        'plows_view_count': plows_view_products.count(),
+    })
+
+def Harvesters_view(request):
+    harvesters_products = Product.objects.filter(name__icontains="harvesters")
+    paginator = Paginator(harvesters_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/harvesters.html', {
+        'harvesters_products': page_obj,
+        'harvesters_count': harvesters_products.count(),
+    })
+
+def Tankers_view(request):
+    tanker_products = Product.objects.filter(name__icontains="Tanker")
+    paginator = Paginator(tanker_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Tanker.html', {
+        'Tanker_products': page_obj,
+        'Tanker_count': tanker_products.count(),
+    })
+
+def Dumptrucks_view(request):
+    dump_truck_products = Product.objects.filter(name__icontains="Dump Truck")
+    paginator = Paginator(dump_truck_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/DumpTruck.html', {
+        'DumpTruck_products': page_obj,
+        'DumpTruck_count': dump_truck_products.count(),
+    })
+
+def Forklifts_view(request):
+    forklift_products = Product.objects.filter(name__icontains="Forklift")
+    paginator = Paginator(forklift_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Forklift.html', {
+        'Forklift_products': page_obj,
+        'Forklift_count': forklift_products.count(),
+    })
+
+def Trailers_view(request):
+    trailer_products = Product.objects.filter(name__icontains="Trailer")
+    paginator = Paginator(trailer_products, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home/Trailer.html', {
+        'Trailer_products': page_obj,
+        'Trailer_count': trailer_products.count(),
+    })
 
 
 

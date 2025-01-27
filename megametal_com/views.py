@@ -287,15 +287,23 @@ def Trailers_view(request):
 
 
 def product_search(request):
-    query = request.GET.get('search', '')
-    print(f"Search query: {query}")  # Debugging line
+    query = request.GET.get('search', '').strip()  # Trim whitespace
+    print(f"Search query: '{query}'")  # Debugging line
+
     if query:
-        products = Product.objects.filter(name__icontains=query)
+        # Check if the query length is less than 3
+        if len(query) < 3:
+            # If less than 3 characters, we can still search for products that contain the query
+            products = Product.objects.filter(name__icontains=query)
+        else:
+            # If 3 or more characters, perform a more comprehensive search
+            products = Product.objects.filter(name__icontains=query)
+
         print(f"Found products: {products}")  # Debugging line
     else:
         products = Product.objects.none()
 
-    paginator = Paginator(products,3)
+    paginator = Paginator(products, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -304,6 +312,13 @@ def product_search(request):
         'RockDrill_count': products.count(),
         'search_query': query,
     })
+
+
+
+
+
+
+
 
 
 

@@ -44,10 +44,7 @@ urlpatterns = [
     path('Forklifts/',views.Forklifts_view,name='Forklifts'),
     path('Trailers/',views.Trailers_view,name='Trailers'),
     
-    path('search/',views.product_search, name='product_search'),
-   
-                                                          
-   
+    path('search/',views.product_search, name='product_search'),   
                                    
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

@@ -175,3 +175,7 @@ EMAIL_USE_SSL = False
 
 COMPANY_EMAIL = 'megametalmachinery@gmail.com'
 COMPANY_LOGO = '/static/images/logos/machinery_logo_web.webp'
+
+
+
+

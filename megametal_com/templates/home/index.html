@@ -156,7 +156,7 @@
                                         </li>
                                         
                                         <li class="nav-links__item nav-links__item--with-submenu"><a
-                                                href="shop-grid-3-columns-sidebar.html"><span>Shop <svg
+                                                href="#"><span>Shop <svg
                                                         class="nav-links__arrow" width="9px" height="6px">
                                                         <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-9x6">
                                                         </use>
@@ -166,7 +166,7 @@
                                                     {% if user.is_authenticated %}
                                                     <li><a href="{% url 'cart_view' %}">Cart</a></li>
                                                     <li><a href="{% url 'checkout_view' %}">Checkout</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></l>
+                                                    <li><a href="{% url 'myorders' %}">my orders</a></l>
                                                     {% endif %}    
                                                 </ul><!-- .menu / end -->
                                             </div>
@@ -174,7 +174,7 @@
                                         <li class="nav-links__item nav-links__item--with-submenu"><a
                                                 href="{% url 'about_us' %}"><span>About Us</span></a>
                                         </li>
-                                        <li class="nav-links__item"><a href="#"><span>Contact
+                                        <li class="nav-links__item"><a href="#Contact"><span>Contact
                                                     Us</span></a></li>
                                                     {% if user.is_authenticated %}
                                                     <li class="nav-links__item">

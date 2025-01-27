@@ -55,7 +55,7 @@
                   <div class="row">
                       <div class="col-12 col-md-6 col-lg-4">
                           <div class="site-footer__widget footer-contacts">
-                              <h5 class="footer-contacts__title">Contact Us</h5>
+                              <h5 id="Contact" class="footer-contacts__title">Contact Us</h5>
              
                               <ul class="footer-contacts__contacts">
                                   <li><i class="footer-contacts__icon fas fa-globe-americas"></i>Head Ofice At japan,Europe,South America,Asia Countries</li>
@@ -68,7 +68,7 @@
                               </ul>
                           </div>
                       </div>
-                      <div class="col-6 col-md-3 col-lg-2">
+                      {% comment %} <div class="col-6 col-md-3 col-lg-2">
                           <div class="site-footer__widget footer-links">
                               <h5 class="footer-links__title">Information</h5>
                               <ul class="footer-links__list">
@@ -77,15 +77,14 @@
                                  
                               </ul>
                           </div>
-                      </div>
+                      </div> {% endcomment %}
                       <div class="col-6 col-md-3 col-lg-2">
                           <div class="site-footer__widget footer-links">
                               <h5 class="footer-links__title">My Account</h5>
                               <ul class="footer-links__list">
                                   <li class="footer-links__item"><a href="{% url 'myorders' %}" class="footer-links__link">Order
                                           History</a></li>
-                                  <li class="footer-links__item"><a href="#" class="footer-links__link">Wish
-                                          List</a></li>
+                                 
                                           <li class="footer-links__item"><a href="{% url 'cart_view' %}" class="footer-links__link">cart</a></li>
                                   <li class="footer-links__item"><a href="{% url 'register_partner' %}"
                                           class="footer-links__link">register as a partner</a></li>

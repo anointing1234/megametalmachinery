@@ -55,7 +55,7 @@ def about_us_view(request):
 
 def Excavators_view(request):
     excavator_products = Product.objects.filter(name__icontains="Excavator")
-    paginator = Paginator(excavator_products, 2)  # Show 2 products per page
+    paginator = Paginator(excavator_products,3)  # Show3 products per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/excavators.html', {
@@ -65,7 +65,7 @@ def Excavators_view(request):
 
 def Bulldozers_view(request):
     bulldozer_products = Product.objects.filter(name__icontains="bulldozar")
-    paginator = Paginator(bulldozer_products, 2)
+    paginator = Paginator(bulldozer_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Bulldozers.html', {
@@ -75,7 +75,7 @@ def Bulldozers_view(request):
 
 def Cranes_view(request):
     crane_products = Product.objects.filter(name__icontains="Crane")
-    paginator = Paginator(crane_products, 2)
+    paginator = Paginator(crane_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Cranes.html', {
@@ -85,7 +85,7 @@ def Cranes_view(request):
 
 def Loaders_view(request):
     loaders_products = Product.objects.filter(name__icontains="Loader")
-    paginator = Paginator(loaders_products, 2)
+    paginator = Paginator(loaders_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Loaders.html', {
@@ -95,7 +95,7 @@ def Loaders_view(request):
 
 def SteelPlates_view(request):
     steel_products = Product.objects.filter(name__icontains="Steel Plate")
-    paginator = Paginator(steel_products, 2)
+    paginator = Paginator(steel_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/steel.html', {
@@ -105,7 +105,7 @@ def SteelPlates_view(request):
 
 def AluminumSheets_view(request):
     aluminum_products = Product.objects.filter(name__icontains="Aluminum Sheet")
-    paginator = Paginator(aluminum_products, 2)
+    paginator = Paginator(aluminum_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Aluminum.html', {
@@ -115,7 +115,7 @@ def AluminumSheets_view(request):
 
 def CopperWires_view(request):
     copper_products = Product.objects.filter(name__icontains="Copper")
-    paginator = Paginator(copper_products, 2)
+    paginator = Paginator(copper_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Copper.html', {
@@ -125,7 +125,7 @@ def CopperWires_view(request):
 
 def MetalPipes_view(request):
     metal_products = Product.objects.filter(name__icontains="Metal pipes")
-    paginator = Paginator(metal_products, 2)
+    paginator = Paginator(metal_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/metal.html', {
@@ -135,7 +135,7 @@ def MetalPipes_view(request):
 
 def CNCMachines_view(request):
     cnc_products = Product.objects.filter(name__icontains="CNC")
-    paginator = Paginator(cnc_products, 2)
+    paginator = Paginator(cnc_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/cnc.html', {
@@ -145,7 +145,7 @@ def CNCMachines_view(request):
 
 def Lathes_view(request):
     lathes_products = Product.objects.filter(name__icontains="Lathes")
-    paginator = Paginator(lathes_products, 2)
+    paginator = Paginator(lathes_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Lathes.html', {
@@ -155,7 +155,7 @@ def Lathes_view(request):
 
 def MillingMachines_view(request):
     milling_products = Product.objects.filter(name__icontains="Milling Machine")
-    paginator = Paginator(milling_products, 2)
+    paginator = Paginator(milling_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Milling.html', {
@@ -165,7 +165,7 @@ def MillingMachines_view(request):
 
 def HydraulicPresses_view(request):
     hydraulic_products = Product.objects.filter(name__icontains="Hydraulic Press")
-    paginator = Paginator(hydraulic_products, 2)
+    paginator = Paginator(hydraulic_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Hydraulic.html', {
@@ -175,7 +175,7 @@ def HydraulicPresses_view(request):
 
 def RockDrill_view(request):
     rock_drill_products = Product.objects.filter(name__icontains="Rock Drills")
-    paginator = Paginator(rock_drill_products, 2)
+    paginator = Paginator(rock_drill_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/RockDrill.html', {
@@ -185,7 +185,7 @@ def RockDrill_view(request):
 
 def CrushingMachines_view(request):
     crushing_machines_products = Product.objects.filter(name__icontains="Crushing Machines")
-    paginator = Paginator(crushing_machines_products, 2)
+    paginator = Paginator(crushing_machines_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/CrushingMachines.html', {
@@ -195,7 +195,7 @@ def CrushingMachines_view(request):
 
 def MiningTrucks_view(request):
     mining_trucks_products = Product.objects.filter(name__icontains="Mining Trucks")
-    paginator = Paginator(mining_trucks_products, 2)
+    paginator = Paginator(mining_trucks_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/MiningTrucks.html', {
@@ -205,7 +205,7 @@ def MiningTrucks_view(request):
 
 def ConveyorBelts_view(request):
     conveyor_belts_products = Product.objects.filter(name__icontains="Conveyor Belt")
-    paginator = Paginator(conveyor_belts_products, 2)
+    paginator = Paginator(conveyor_belts_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/ConveyorBelts.html', {
@@ -215,7 +215,7 @@ def ConveyorBelts_view(request):
 
 def Tractors_view(request):
     tractor_products = Product.objects.filter(name__icontains="tractor")
-    paginator = Paginator(tractor_products, 2)
+    paginator = Paginator(tractor_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/tractor.html', {
@@ -225,7 +225,7 @@ def Tractors_view(request):
 
 def plows_view(request):
     plows_view_products = Product.objects.filter(name__icontains="Plow")
-    paginator = Paginator(plows_view_products, 2)
+    paginator = Paginator(plows_view_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/plow.html', {
@@ -235,7 +235,7 @@ def plows_view(request):
 
 def Harvesters_view(request):
     harvesters_products = Product.objects.filter(name__icontains="harvesters")
-    paginator = Paginator(harvesters_products, 2)
+    paginator = Paginator(harvesters_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/harvesters.html', {
@@ -245,7 +245,7 @@ def Harvesters_view(request):
 
 def Tankers_view(request):
     tanker_products = Product.objects.filter(name__icontains="Tanker")
-    paginator = Paginator(tanker_products, 2)
+    paginator = Paginator(tanker_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Tanker.html', {
@@ -255,7 +255,7 @@ def Tankers_view(request):
 
 def Dumptrucks_view(request):
     dump_truck_products = Product.objects.filter(name__icontains="Dump Truck")
-    paginator = Paginator(dump_truck_products, 2)
+    paginator = Paginator(dump_truck_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/DumpTruck.html', {
@@ -265,7 +265,7 @@ def Dumptrucks_view(request):
 
 def Forklifts_view(request):
     forklift_products = Product.objects.filter(name__icontains="Forklift")
-    paginator = Paginator(forklift_products, 2)
+    paginator = Paginator(forklift_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Forklift.html', {
@@ -275,7 +275,7 @@ def Forklifts_view(request):
 
 def Trailers_view(request):
     trailer_products = Product.objects.filter(name__icontains="Trailer")
-    paginator = Paginator(trailer_products, 2)
+    paginator = Paginator(trailer_products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'home/Trailer.html', {
@@ -295,7 +295,7 @@ def product_search(request):
     else:
         products = Product.objects.none()
 
-    paginator = Paginator(products, 2)
+    paginator = Paginator(products,3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

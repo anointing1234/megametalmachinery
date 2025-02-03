@@ -29,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ri&(g5&aee*ngtd0t6_(xbhq80(*9n5_7=-mlay_%7sw^9p^t-'
 
-# CSRF_TRUSTED_ORIGINS = ["https://megametalmachinery.com"]
-# ALLOWED_HOSTS = ["megametalmachinery.com"]
+CSRF_TRUSTED_ORIGINS = ["https://megametalmachinery.com"]
+ALLOWED_HOSTS = ["megametalmachinery.com"]
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 DEBUG = False
 

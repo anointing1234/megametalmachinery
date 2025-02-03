@@ -1,0 +1,8 @@
+site_mail_login zohomail:
+https://mail.zoho.com/zm/
+email:
+password:July272003@
+
+site_admin_login:
+email:Admin@mail.com
+password:123456admin

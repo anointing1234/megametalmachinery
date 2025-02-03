@@ -317,7 +317,8 @@
                                 <use xlink:href="{% static 'images/sprite.svg' %}#menu-18x14"></use>
                             </svg></button> <a class="mobile-header__logo" href="{% url 'home' %}">
                                 <h5>
-                                  <img class="responsive-logo" src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+                             <a href="{% url 'home' %}">     <img class="responsive-logo" src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+                             </a>
                                 </h5>
                               </a>
                               
@@ -402,7 +403,8 @@
                 </div>
             </div><!-- .topbar / end -->
             <div class="site-header__middle container">
-                <img src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+            <a href="{% url 'home' %}">    <img src="{% static 'images/logos/machinery_logo_web.webp' %}" alt="">
+            </a>
                 <div class="site-header__search">
                     <div class="search">
                         <form class="search__form" action="{% url 'product_search' %}" method="GET">
